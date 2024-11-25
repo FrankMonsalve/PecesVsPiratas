@@ -472,132 +472,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wizzart_C_Sat_16
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 70
-        width: 15
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a520fdd69bfcabd42a732a394f75acae
-      internalID: -390832931
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wizzart_C_Sat_17
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 79
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9895ff4afa1853a48ad4031e5e64ca42
-      internalID: 309542295
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wizzart_C_Sat_18
-      rect:
-        serializedVersion: 2
-        x: 145
-        y: 70
-        width: 15
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 336b960bb3720424ca7553632357330a
-      internalID: -749393566
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wizzart_C_Sat_19
-      rect:
-        serializedVersion: 2
-        x: 164
-        y: 78
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ceb314ff20405b24a8570d9f7fa94fb5
-      internalID: -2121408117
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wizzart_C_Sat_20
-      rect:
-        serializedVersion: 2
-        x: 215
-        y: 70
-        width: 10
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 97b077f483c064842b047e95213c49b1
-      internalID: -897071907
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wizzart_C_Sat_21
-      rect:
-        serializedVersion: 2
-        x: 229
-        y: 77
-        width: 14
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e563f546120ad594394de709b832d011
-      internalID: -1983734269
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Wizzart_C_Sat_22
       rect:
         serializedVersion: 2
@@ -643,12 +517,12 @@ TextureImporter:
       name: Wizzart_C_Sat_24
       rect:
         serializedVersion: 2
-        x: 88
-        y: 48
-        width: 17
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 79
+        y: 47
+        width: 46
+        height: 48
+      alignment: 9
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -661,34 +535,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wizzart_C_Sat_25
-      rect:
-        serializedVersion: 2
-        x: 109
-        y: 58
-        width: 15
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ab38b3a003479c24692888da3932db81
-      internalID: -683373361
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Wizzart_C_Sat_26
       rect:
         serializedVersion: 2
-        x: 152
+        x: 143
         y: 48
-        width: 17
-        height: 27
+        width: 46
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -703,34 +556,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wizzart_C_Sat_27
-      rect:
-        serializedVersion: 2
-        x: 172
-        y: 58
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e16d984b2c283a2439fe84a2a65f43aa
-      internalID: -1534991535
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Wizzart_C_Sat_28
       rect:
         serializedVersion: 2
-        x: 217
+        x: 212
         y: 48
-        width: 17
-        height: 28
+        width: 38
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -740,27 +572,6 @@ TextureImporter:
       bones: []
       spriteID: c54f5687073f6f644b202f9fa3f7cf34
       internalID: -1459800958
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wizzart_C_Sat_29
-      rect:
-        serializedVersion: 2
-        x: 235
-        y: 60
-        width: 12
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61dbf1fb85404284ab21e322a4f04692
-      internalID: 1545631470
       vertices: []
       indices: 
       edges: []
