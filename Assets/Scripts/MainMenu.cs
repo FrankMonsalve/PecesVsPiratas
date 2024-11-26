@@ -5,8 +5,8 @@ public class MainMenu : MonoBehaviour
 {
     public void LoadLevel(string nombreNivel)
     {
-        SceneManager.LoadScene(nombreNivel);
-        Time.timeScale = 1;
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        //Time.timeScale = 1;
     }
 
 }
