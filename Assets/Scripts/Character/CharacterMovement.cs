@@ -9,17 +9,19 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Vector3 _initialPosition;
 
     public bool HasMoved => _hasMoved;
-    
+
     public void MoveToCell(Vector3Int targetCell, Tilemap tilemap)
     {
+        Debug.Log(tilemap);
         // Si ya se movió, no puede mover más
         if (_hasMoved)
         {
+            
             Debug.Log("Este personaje ya no puede moverse este turno.");
             return;
         }
 
- 
+
         Vector3 cellCenter = tilemap.GetCellCenterWorld(targetCell);
         transform.position = cellCenter;
 
@@ -44,10 +46,9 @@ public class CharacterMovement : MonoBehaviour
         _remainingMovement = _maxMovement;
         _hasMoved = false;
     }
-
-    private void MoveToInitialPosition()
+    public void MoveToInitialPosition(Tilemap tilemap)
     {
-        
+        Vector3 cellCenter = tilemap.GetCellCenterWorld(tilemap.WorldToCell(_initialPosition));
+        transform.position = cellCenter;
     }
-
 }
