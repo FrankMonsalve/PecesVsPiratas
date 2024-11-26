@@ -8,7 +8,8 @@ public class GameTurnManager : MonoBehaviour
 
     [SerializeField] private Tilemap tilemap; // Referencia al Tilemap
     [SerializeField] private List<List<Character>> players; // Lista de listas de personajes
-    private int currentPlayerIndex = 0; // Índice del jugador actual
+    private int _currentPlayerIndex = 0; // Índice del jugador actual
+    private Character _selectedCharacter;
 
     private void Awake()
     {
@@ -25,7 +26,8 @@ public class GameTurnManager : MonoBehaviour
         StartPlayerTurn();
     }
 
-    private void Update() {
+    private void Update()
+    {
         HandlePlayerInput();
     }
 
@@ -49,19 +51,19 @@ public class GameTurnManager : MonoBehaviour
     // Inicia el turno del jugador actual
     public void StartPlayerTurn()
     {
-        List<Character> currentPlayerCharacters = players[currentPlayerIndex];
+        List<Character> currentPlayerCharacters = players[_currentPlayerIndex];
 
         foreach (Character character in currentPlayerCharacters)
         {
             character.Movement.ResetMovement();
         }
 
-        Debug.Log($"Es el turno del Jugador {currentPlayerIndex + 1}. ¡Mueve tus personajes!");
+        Debug.Log($"Es el turno del Jugador {_currentPlayerIndex + 1}. ¡Mueve tus personajes!");
     }
 
     public void CheckTurnEnd()
     {
-        List<Character> currentPlayerCharacters = players[currentPlayerIndex];
+        List<Character> currentPlayerCharacters = players[_currentPlayerIndex];
 
         foreach (Character character in currentPlayerCharacters)
         {
@@ -74,32 +76,45 @@ public class GameTurnManager : MonoBehaviour
 
     private void EndPlayerTurn()
     {
-        Debug.Log($"Todos los personajes del Jugador {currentPlayerIndex + 1} han terminado su turno.");
+        Debug.Log($"Todos los personajes del Jugador {_currentPlayerIndex + 1} han terminado su turno.");
 
-        currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
+        _currentPlayerIndex = (_currentPlayerIndex + 1) % players.Count;
 
         StartPlayerTurn();
     }
 
     private void HandlePlayerInput()
-{
-    if (Input.GetMouseButtonDown(0)) // Click izquierdo
     {
-        // Obtén la posición del mouse en el mundo y tradúcela a una celda
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3Int cellPos = tilemap.WorldToCell(mousePos);
-
-        // Verifica los personajes del jugador actual
-        foreach (Character character in players[currentPlayerIndex])
+        if (Input.GetMouseButtonDown(0)) // Click izquierdo
         {
-            if (!character.Movement.HasMoved)
-            {
-                character.Movement.MoveToCell(cellPos, tilemap);
-                break; // Detén el bucle después de mover un personaje
-            }
-        }
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        CheckTurnEnd(); // Revisa si el turno debe finalizar
+            RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
+            if (hit.collider != null)
+            {
+                if (_selectedCharacter == null && IsCurrentPlayerCharacter(hit.collider.GetComponent<Character>()))
+                {
+                    _selectedCharacter = hit.collider.GetComponent<Character>();
+                    Debug.Log($"Character selected {_selectedCharacter}");
+                    return;
+                }
+
+                if (_selectedCharacter != null && !_selectedCharacter.Movement.HasMoved)
+                {
+                    Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    Vector3Int cellPos = tilemap.WorldToCell(mousePos);
+                    _selectedCharacter.Movement.MoveToCell(cellPos, tilemap);
+                    Debug.Log($"Character {_selectedCharacter.name} Se movio a la casilla {cellPos}");
+
+                    _selectedCharacter = null;
+                }
+            }
+
+            CheckTurnEnd(); // Revisa si el turno debe finalizar
+        }
     }
-}
+    private bool IsCurrentPlayerCharacter(Character character)
+    {
+        return players[_currentPlayerIndex].Contains(character);
+    }
 }

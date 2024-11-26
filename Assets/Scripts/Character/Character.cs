@@ -6,10 +6,10 @@ public class Character : MonoBehaviour
     [SerializeField] private string _nombre;
     [SerializeField] private int _id;
     [SerializeField] private int _defaultHealth;
-    [SerializeField] private int _maxHealth;
+    private int _maxHealth;
     [SerializeField] private int _health;
     [SerializeField] private int _defaultAttack;
-    [SerializeField] private int _maxAttack;
+    private int _maxAttack;
     [SerializeField] private int _attack;
     [SerializeField] private int _maxMovement;
     [SerializeField] private Animator _animator;
