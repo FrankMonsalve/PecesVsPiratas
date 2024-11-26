@@ -9,6 +9,7 @@ TagManager:
   - Arrastrable
   - Objeto
   - BoxUp
+  - Personaje
   layers:
   - Default
   - TransparentFX
