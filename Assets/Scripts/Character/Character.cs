@@ -11,7 +11,10 @@ public class Character : MonoBehaviour
     [SerializeField] private int _defaultAttack;
     [SerializeField] private int _maxAttack;
     [SerializeField] private int _attack;
+    [SerializeField] private int _maxMovement;
     [SerializeField] private Animator _animator;
+
+    [SerializeField] private CharacterMovement _characterMovement;
 
     public string Nombre => _nombre;
     public int Id => _id;
@@ -20,6 +23,8 @@ public class Character : MonoBehaviour
 
     public int Health => _health;
     public int Attack => _attack;
+
+    public CharacterMovement Movement => _characterMovement;
     public bool IsAlive { get; set; }
 
     public Animator Animator => _animator;
