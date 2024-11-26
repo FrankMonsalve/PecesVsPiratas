@@ -1,29 +1,78 @@
+using System;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public int health; // Salud inicial del personaje
-    public int attack;  // Ataque inicial del personaje
+    [SerializeField] private string _nombre;
+    [SerializeField] private int _id;
+    [SerializeField] private int _defaultHealth;
+    [SerializeField] private int _maxHealth;
+    [SerializeField] private int _health;
+    [SerializeField] private int _defaultAttack;
+    [SerializeField] private int _maxAttack;
+    [SerializeField] private int _attack;
+    [SerializeField] private Animator _animator;
+
+    public string Nombre => _nombre;
+    public int Id => _id;
+    public int DefaultHealth => _defaultHealth;
+    public int DefaulAttack => _defaultAttack;
+
+    public int Health => _health;
+    public int Attack => _attack;
+    public bool IsAlive { get; set; }
+
+    public Animator Animator => _animator;
+
+    public void Setup(int addHealth, int addAttack)
+    {
+        _maxHealth = addHealth + _defaultAttack;
+        _maxAttack = addAttack + _defaultAttack;
+
+        _health = _maxHealth;
+        _attack = _maxAttack;
+
+
+        IsAlive = true;
+    }
+
+    public void Setup()
+    {
+        _maxHealth = _defaultAttack;
+        _maxAttack = _defaultAttack;
+
+        _health = _defaultHealth;
+        _attack = _defaultAttack;
+        IsAlive = true;
+    }
 
     // Método para aplicar daño
     public void TakeDamage(int damage)
     {
-        health -= damage; // Reduce la salud
-        if (health <= 0)
+        _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
+        if (_health <= 0)
         {
-            Die(); // Si la salud es 0 o menor, el personaje muere
+            IsAlive = false;
         }
     }
 
+    public void IncreaseHealth(int value)
+    {
+        _health = Mathf.Clamp(_health + value, 0, _maxHealth);
+    }
+
     // Método de muerte
+    /*
     private void Die()
     {
         Debug.Log(gameObject.name + " ha muerto.");
         // Aquí puedes agregar efectos visuales de muerte o eliminar al personaje de la batalla
         Destroy(gameObject); // Esto destruye el objeto del personaje
     }
-
+    */
     // Método de ataque
+
+    /*
     public void Attack(Character target)
     {
         if (target != null)
@@ -32,4 +81,5 @@ public class Character : MonoBehaviour
             Debug.Log(gameObject.name + " ataca a " + target.gameObject.name + " y le hace " + attack + " de daño.");
         }
     }
+    */
 }

@@ -25,17 +25,17 @@ public class BattleManager : MonoBehaviour
                 Character pez = fila1Peces[pezIndex];
 
                 // Asegurarse de que ambos personajes están vivos antes de atacar
-                if (pirata == null || pez == null || pirata.health <= 0 || pez.health <= 0)
+                if (pirata == null || pez == null || pirata._health <= 0 || pez._health <= 0)
                 {
                     // Si el pirata está muerto, avanzamos al siguiente personaje
-                    if (pirata == null || pirata.health <= 0)
+                    if (pirata == null || pirata._health <= 0)
                     {
                         pirataIndex++; 
                         continue;
                     }
 
                     // Si el pez está muerto, avanzamos al siguiente personaje
-                    if (pez == null || pez.health <= 0)
+                    if (pez == null || pez._health <= 0)
                     {
                         pezIndex++;
                         continue;
@@ -43,17 +43,17 @@ public class BattleManager : MonoBehaviour
                 }
 
                 // Batalla entre pirata y pez mientras ambos estén vivos
-                while (pirata != null && pez != null && pirata.health > 0 && pez.health > 0)
+                while (pirata != null && pez != null && pirata._health > 0 && pez._health > 0)
                 {
                     // Turno del pirata
-                    if (pirata != null && pirata.health > 0)
+                    if (pirata != null && pirata._health > 0)
                     {
                         pirata.Attack(pez);
                         yield return new WaitForSeconds(1f); // Espera entre ataques
                     }
 
                     // Verificar si el pez está muerto
-                    if (pez != null && pez.health <= 0)
+                    if (pez != null && pez._health <= 0)
                     {
                         Debug.Log($"¡{pez.name} ha muerto! El pirata {pirata.name} sigue al siguiente pez.");
                         pezIndex++; // Pasar al siguiente pez
@@ -61,14 +61,14 @@ public class BattleManager : MonoBehaviour
                     }
 
                     // Turno del pez
-                    if (pez != null && pez.health > 0)
+                    if (pez != null && pez._health > 0)
                     {
                         pez.Attack(pirata);
                         yield return new WaitForSeconds(1f); // Espera entre ataques
                     }
 
                     // Verificar si el pirata está muerto
-                    if (pirata != null && pirata.health <= 0)
+                    if (pirata != null && pirata._health <= 0)
                     {
                         Debug.Log($"¡{pirata.name} ha muerto! El pez {pez.name} sigue al siguiente pirata.");
                         pirataIndex++; // Pasar al siguiente pirata
@@ -114,7 +114,7 @@ public class BattleManager : MonoBehaviour
         int aliveCount = 0;
         foreach (var character in team)
         {
-            if (character != null && character.health > 0) // Si el personaje está vivo
+            if (character != null && character._health > 0) // Si el personaje está vivo
             {
                 aliveCount++;
             }
