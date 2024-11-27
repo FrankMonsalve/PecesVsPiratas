@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -6,15 +7,17 @@ public class Character : MonoBehaviour
     [SerializeField] private string _nombre;
     [SerializeField] private int _id;
     [SerializeField] private int _defaultHealth;
-    [SerializeField] private int _maxHealth;
+    private int _maxHealth;
     [SerializeField] private int _health;
     [SerializeField] private int _defaultAttack;
-    [SerializeField] private int _maxAttack;
+    private int _maxAttack;
     [SerializeField] private int _attack;
     [SerializeField] private int _maxMovement;
     [SerializeField] private Animator _animator;
 
     [SerializeField] private CharacterMovement _characterMovement;
+
+    [SerializeField] private List<Node> _node;
 
     public string Nombre => _nombre;
     public int Id => _id;
@@ -25,9 +28,12 @@ public class Character : MonoBehaviour
     public int Attack => _attack;
 
     public CharacterMovement Movement => _characterMovement;
+
     public bool IsAlive { get; set; }
 
     public Animator Animator => _animator;
+
+    public List<Node> Node => _node;
 
     public void Setup(int addHealth, int addAttack)
     {
@@ -49,15 +55,20 @@ public class Character : MonoBehaviour
         _health = _defaultHealth;
         _attack = _defaultAttack;
         IsAlive = true;
+
+        OutOfTurn();
     }
 
     // Método para aplicar daño
     public void TakeDamage(int damage)
     {
+        Debug.Log(gameObject.name + $" Daño x ¡¡{damage}!!");
         _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
         if (_health <= 0)
         {
             IsAlive = false;
+            Die();
+
         }
     }
 
@@ -66,15 +77,30 @@ public class Character : MonoBehaviour
         _health = Mathf.Clamp(_health + value, 0, _maxHealth);
     }
 
-    // Método de muerte
-    /*
+    public void InTurn()
+    {
+        foreach (var item in _node)
+        {
+            item.Inicializate();
+        }
+    }
+
+    public void OutOfTurn()
+    {
+        foreach (var item in _node)
+        {
+            item.Hiden();
+        }
+    }
+
+
     private void Die()
     {
         Debug.Log(gameObject.name + " ha muerto.");
-        // Aquí puedes agregar efectos visuales de muerte o eliminar al personaje de la batalla
-        Destroy(gameObject); // Esto destruye el objeto del personaje
+        
+        Destroy(gameObject); 
     }
-    */
+
     // Método de ataque
 
     /*

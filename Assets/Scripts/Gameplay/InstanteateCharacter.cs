@@ -11,7 +11,7 @@ public class InstanteateCharacter : MonoBehaviour
     private List<Character> player1 = new List<Character>();
     private List<Character> player2 = new List<Character>();
 
-    void Start()
+    void Awake()
     {
         characterList = Instantiate(characterList);
         InitializePlayers();
@@ -39,6 +39,7 @@ public class InstanteateCharacter : MonoBehaviour
 
             // Instancia el personaje en la posición inicial
             Character character = Instantiate(characterPrefab, cellCenter, Quaternion.identity);
+            character.Setup();
 
             // Asigna el personaje al jugador correspondiente
             if (item.PlayerId == 1)

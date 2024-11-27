@@ -2792,19 +2792,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listCharacterSpawn:
   - PlayerId: 1
-    IdCharacter: 2
+    IdCharacter: 1
     PositionInitial: {x: 0, y: 0, z: 0}
-  - PlayerId: 2
+  - PlayerId: 1
     IdCharacter: 1
     PositionInitial: {x: 0, y: 2, z: 0}
-  - PlayerId: 2
+  - PlayerId: 1
     IdCharacter: 1
     PositionInitial: {x: 1, y: 2, z: 0}
   - PlayerId: 2
-    IdCharacter: 1
+    IdCharacter: 2
     PositionInitial: {x: 0, y: 1, z: 0}
-  - PlayerId: 1
-    IdCharacter: 1
+  - PlayerId: 2
+    IdCharacter: 2
     PositionInitial: {x: 2, y: 2, z: 0}
   characterList: {fileID: 11400000, guid: baa14ba6247aa4442a1927607451a0b9, type: 2}
   tilemap: {fileID: 996367911}
@@ -5508,6 +5508,8 @@ MonoBehaviour:
   tilemap: {fileID: 996367911}
   player: {fileID: 1365347124}
   maxMovement: 3
+  attackRange: 2
+  attackDamage: 10
   isPlayerTurn: 1
 --- !u!212 &1365347123
 SpriteRenderer:
@@ -7017,6 +7019,8 @@ MonoBehaviour:
   tilemap: {fileID: 996367911}
   player: {fileID: 1365347124}
   maxMovement: 3
+  attackRange: 1
+  attackDamage: 10
 --- !u!212 &2041485600
 SpriteRenderer:
   m_ObjectHideFlags: 0

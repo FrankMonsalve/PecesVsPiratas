@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Prueba/9Sliced.png.meta
 guid: 3c7ab6eea943f7c4f9be3de80acbfe65
+========
+guid: a888fa6df2fb74f4d98098bdd33f78a0
+>>>>>>>> origin/Ana:Assets/Sprites/UnityAssetStoreExports/Witchery AssetPack/UI_ - copia.png.meta
 TextureImporter:
   internalIDToNameTable:
   - first:

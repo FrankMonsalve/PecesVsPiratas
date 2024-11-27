@@ -6,6 +6,8 @@ public class EnemyAI : MonoBehaviour
     public Tilemap tilemap; // Referencia al Tilemap
     public Transform player; // Referencia al jugador
     public int maxMovement = 3; // Rango máximo de movimiento
+    public int attackRange = 1; // Rango de ataque
+    public int attackDamage = 10; // Daño del ataque
 
     private Vector3Int enemyCell; // Posición actual del enemigo en la grilla
     private Vector3Int playerCell; // Posición del jugador en la grilla
@@ -44,6 +46,12 @@ public class EnemyAI : MonoBehaviour
         if (distance <= maxMovement)
         {
             MoveToCell(targetCell);
+
+            // Verificar si está en rango de ataque
+            if (distance <= attackRange)
+            {
+                AttackPlayer(); // Atacar al jugador
+            }
         }
         else
         {
@@ -59,7 +67,14 @@ public class EnemyAI : MonoBehaviour
         Debug.Log($"Enemigo movido a la celda {targetCell}");
     }
 
-    
-
-
+    private void AttackPlayer()
+    {
+        // Aquí se asume que el jugador tiene el script Character adjunto
+        Character playerCharacter = player.GetComponent<Character>();
+        if (playerCharacter != null)
+        {
+            playerCharacter.TakeDamage(attackDamage);
+            Debug.Log($"Enemigo atacó al jugador y le quitó {attackDamage} de vida.");
+        }
+    }
 }
