@@ -11,12 +11,12 @@ public class GenerarPersonajes : MonoBehaviour
         // Llamamos a la función para generar los personajes al inicio de la escena
         GenerarPersonajesEnCajas();
     }
-
     public void GenerarPersonajesEnCajas()
     {
         // Encontrar todas las cajas activas de abajo
         cajasAbajo = GameObject.FindGameObjectsWithTag("boxDown")
-                                .Select(go => go.transform) // Convertimos los GameObjects en Transform
+                                .Where(go => go.activeSelf)  // Solo obtener las cajas activas
+                                .Select(go => go.transform)  // Convertir GameObjects a Transform
                                 .ToArray();
 
         // Eliminar personajes actuales en las cajas de abajo
@@ -29,25 +29,24 @@ public class GenerarPersonajes : MonoBehaviour
             }
         }
 
-        // Generar personajes en las cajas de abajo activas de forma aleatoria
+        // Generar personajes en las cajas de abajo activas
         for (int i = 0; i < cajasAbajo.Length; i++)
         {
-            // Comprobar si la caja abajo está activa
+            // Verificar si la caja está activa
             if (cajasAbajo[i].gameObject.activeSelf)
             {
-                // Seleccionar un índice aleatorio para los prefabs
-                int indiceAleatorio = Random.Range(0, prefabsPersonajes.Length);
-
-                // Instanciar el personaje correspondiente en la caja activa de abajo
+                int indiceAleatorio = Random.Range(0, prefabsPersonajes.Length); // Seleccionar un prefab aleatorio
                 GameObject personaje = Instantiate(prefabsPersonajes[indiceAleatorio], cajasAbajo[i].position, Quaternion.identity);
-
-                // Asignar el personaje como hijo de la caja de abajo
-                personaje.transform.parent = cajasAbajo[i];
-
-                // Añadir el script para arrastrar el personaje
-                personaje.AddComponent<Arrastre>(); // Aquí añadimos el componente Arrastre para permitir que el jugador lo mueva
+                personaje.transform.SetParent(cajasAbajo[i]);  // Asignar al transform de la caja
             }
         }
+
+
+
+
     }
+
+
+
 }
 

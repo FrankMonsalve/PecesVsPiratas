@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ControlEscenas : MonoBehaviour
 {
@@ -27,54 +26,29 @@ public class ControlEscenas : MonoBehaviour
         }
     }
 
-    public void IrANuevaEscena()
+    // Incrementa el contador de objetos (si está presente ActivarObjetos)
+    public void IncrementarContador()
     {
-        // Incrementar contadores antes de cambiar de escena
-        if (cajaManager != null && activarObjetos != null)
+        if (activarObjetos != null)
         {
-            activarObjetos.IncrementarContador();
+            activarObjetos.IncrementarContador(); // Incrementar el contador de cajas
         }
         else
         {
-            if (cajaManager == null)
-                Debug.LogWarning("CajaManager es nulo. No se puede incrementar el contador.");
-
-            if (activarObjetos == null)
-                Debug.LogWarning("ActivarObjetos es nulo. No se puede incrementar el contador.");
+            Debug.LogWarning("ActivarObjetos es nulo. No se puede incrementar el contador.");
         }
-
-        // Cambiar a la siguiente escena
-        SceneManager.LoadScene(1); // Reemplaza con el índice o nombre de la escena destino
     }
 
-    public void RegresarAEscenaPrincipal()
+    // Función para desactivar las cajas de abajo y sus contenidos
+    public void DesactivarCajasAbajo()
     {
-        // Cambiar a la escena principal
-        SceneManager.LoadScene(0); // Reemplaza con el índice o nombre de la escena principal
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // Activar objetos en la escena cuando se cargue
         if (cajaManager != null)
         {
-            cajaManager.ActivarObjetosSegunContador();
+            cajaManager.DesactivarCajasAbajo(); // Desactiva las cajas de abajo
         }
         else
         {
-            Debug.LogWarning("CajaManager no está asignado. No se puede activar objetos.");
+            Debug.LogWarning("CajaManager no está asignado. No se puede desactivar las cajas de abajo.");
         }
-    }
-
-    private void OnEnable()
-    {
-        // Suscribir al evento de carga de escena
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        // Cancelar suscripción al evento de carga de escena
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
