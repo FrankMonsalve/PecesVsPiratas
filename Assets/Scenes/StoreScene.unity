@@ -676,12 +676,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generadorPersonajes: {fileID: 1420669214}
   cajasArriba:
-  - {fileID: 713580742}
-  - {fileID: 2017558815}
-  - {fileID: 1116605148}
   - {fileID: 242206508}
-  - {fileID: 1463500736}
+  - {fileID: 1116605148}
+  - {fileID: 2017558815}
   - {fileID: 859643347}
+  - {fileID: 713580742}
+  - {fileID: 1463500736}
   cajasAbajo:
   - {fileID: 1280422568}
   - {fileID: 251729534}
@@ -723,12 +723,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cajasArriba:
-  - {fileID: 713580742}
-  - {fileID: 2017558815}
-  - {fileID: 1116605148}
   - {fileID: 242206508}
-  - {fileID: 1463500736}
+  - {fileID: 1116605148}
+  - {fileID: 2017558815}
+  - {fileID: 713580742}
   - {fileID: 859643347}
+  - {fileID: 1463500736}
   cajasAbajo:
   - {fileID: 1280422568}
   - {fileID: 251729534}
