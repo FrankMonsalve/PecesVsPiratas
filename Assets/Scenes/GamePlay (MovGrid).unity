@@ -1270,7 +1270,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -2567,6 +2567,37 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1059189865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1059189866}
+  m_Layer: 0
+  m_Name: NavMeshSurface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1059189866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059189865}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.14906171, y: 0.31351262, z: -0.020353379}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1069977346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2749,7 +2780,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e13d2af507dcc42a7136d12d2bcff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 996367911}
 --- !u!114 &1112606344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2762,7 +2792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46d68dc407798e42b6702f7effaf0a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 996367911}
+  _tilemap: {fileID: 996367911}
 --- !u!4 &1112606345
 Transform:
   m_ObjectHideFlags: 0
@@ -2797,14 +2827,14 @@ MonoBehaviour:
   - PlayerId: 1
     IdCharacter: 1
     PositionInitial: {x: 0, y: 2, z: 0}
+  - PlayerId: 2
+    IdCharacter: 2
+    PositionInitial: {x: 1, y: 2, z: 0}
   - PlayerId: 1
     IdCharacter: 1
-    PositionInitial: {x: 1, y: 2, z: 0}
-  - PlayerId: 2
-    IdCharacter: 2
     PositionInitial: {x: 0, y: 1, z: 0}
-  - PlayerId: 2
-    IdCharacter: 2
+  - PlayerId: 1
+    IdCharacter: 1
     PositionInitial: {x: 2, y: 2, z: 0}
   characterList: {fileID: 11400000, guid: baa14ba6247aa4442a1927607451a0b9, type: 2}
   tilemap: {fileID: 996367911}
@@ -8434,3 +8464,4 @@ SceneRoots:
   - {fileID: 321903602}
   - {fileID: 1078802694}
   - {fileID: 1112606345}
+  - {fileID: 1059189866}

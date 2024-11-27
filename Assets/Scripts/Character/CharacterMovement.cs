@@ -10,9 +10,10 @@ public class CharacterMovement : MonoBehaviour
 
     public bool HasMoved => _hasMoved;
 
-    public void MoveToCell(Vector3Int targetCell, Tilemap tilemap)
+    public void MoveToCell(Vector3Int targetCell, Tilemap tilemap, int cost)
     {
-
+        
+        
         Debug.Log(tilemap + " MoveToCell");
         // Si ya se movió, no puede mover más
         if (_hasMoved)
@@ -22,12 +23,17 @@ public class CharacterMovement : MonoBehaviour
             return;
         }
 
+        if(_remainingMovement < cost)
+        {
+            return;
+        }
+
 
         Vector3 cellCenter = tilemap.GetCellCenterWorld(targetCell);
         transform.position = cellCenter;
 
 
-        _remainingMovement--;
+        _remainingMovement -= cost;
 
         if (_remainingMovement <= 0)
         {

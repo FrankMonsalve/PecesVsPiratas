@@ -3,6 +3,7 @@ using UnityEngine.Tilemaps;
 
 public class TileNavigator : MonoBehaviour
 {
+    /*
     public Tilemap tilemap;
 
     private Character selectedCharacter; // Personaje actualmente seleccionado
@@ -52,4 +53,5 @@ public class TileNavigator : MonoBehaviour
         // Verifica si el turno ha terminado
         GameTurnManager.Instance.CheckTurnEnd();
     }
+    */
 }
