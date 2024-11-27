@@ -64,6 +64,8 @@ public class Character : MonoBehaviour
     {
         Debug.Log(gameObject.name + $" Daño x ¡¡{damage}!!");
         _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
+        DecreaseTurn();
+        
         if (_health <= 0)
         {
             IsAlive = false;
@@ -99,6 +101,11 @@ public class Character : MonoBehaviour
         Debug.Log(gameObject.name + " ha muerto.");
         
         Destroy(gameObject); 
+    }
+
+    public void DecreaseTurn()
+    {
+        _characterMovement.DrecreaseMovement(1);
     }
 
     // Método de ataque

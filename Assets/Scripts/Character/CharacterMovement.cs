@@ -10,6 +10,11 @@ public class CharacterMovement : MonoBehaviour
 
     public bool HasMoved => _hasMoved;
 
+    public void DrecreaseMovement(int value)
+    {
+        _remainingMovement -= value;
+    }
+
     public void MoveToCell(Vector3Int targetCell, Tilemap tilemap, int cost)
     {
         
