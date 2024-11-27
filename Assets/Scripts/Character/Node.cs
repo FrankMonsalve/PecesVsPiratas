@@ -20,7 +20,6 @@ public class Node : MonoBehaviour
     void Start()
     {
         _character = transform.GetComponentInParent<Character>();
-        Hiden();
         _tilemap = GameTurnManager.Instance.Tilemap;
     }
 

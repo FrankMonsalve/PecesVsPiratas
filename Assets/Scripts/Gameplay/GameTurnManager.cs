@@ -25,6 +25,7 @@ public class GameTurnManager : MonoBehaviour
         if (_tilemap == null)
             Debug.LogError("Tilemap no asignado en GameTurnManager.");
         StartPlayerTurn();
+        _selectedCharacter = null;
     }
 
     private void Update()
@@ -92,12 +93,13 @@ public class GameTurnManager : MonoBehaviour
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
+
             if (hit.collider != null)
             {
                 if (_selectedCharacter == null && IsCharacterInCurrentPlayer(hit.collider.GetComponent<Character>()))
                 {
                     _selectedCharacter = hit.collider.GetComponent<Character>();
-
+                    Debug.Log($"dentro del if in turn{_selectedCharacter}");
                     _selectedCharacter.InTurn();
                     Debug.Log($"Character selected {_selectedCharacter}");
 
@@ -114,8 +116,12 @@ public class GameTurnManager : MonoBehaviour
                 }
                 else if (_selectedCharacter != null && IsCharacterInCurrentPlayer(hit.collider.GetComponent<Character>()))
                 {
+                    _selectedCharacter.OutOfTurn();
+
                     _selectedCharacter = hit.collider.GetComponent<Character>();
+                    _selectedCharacter.InTurn();
                     Debug.Log($"The Character has bin changed selected {_selectedCharacter}");
+                    
                     if (CharacterHasMoved(_selectedCharacter))
                     {
                         Debug.Log($"Character {_selectedCharacter.name} no tiene movimientos disponibles");
