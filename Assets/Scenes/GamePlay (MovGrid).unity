@@ -2836,6 +2836,9 @@ MonoBehaviour:
   - PlayerId: 1
     IdCharacter: 1
     PositionInitial: {x: 2, y: 2, z: 0}
+  - PlayerId: 2
+    IdCharacter: 2
+    PositionInitial: {x: 3, y: 3, z: 0}
   characterList: {fileID: 11400000, guid: baa14ba6247aa4442a1927607451a0b9, type: 2}
   tilemap: {fileID: 996367911}
 --- !u!1 &1242030216
