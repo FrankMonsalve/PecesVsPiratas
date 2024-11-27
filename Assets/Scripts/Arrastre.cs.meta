@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/PruebaGameManager.cs.meta
+guid: 3470556a974b97541a225950b4c5df48
+========
 guid: aa884ae3d60a34b408f7887890780fea
+>>>>>>>> origin/Ana:Assets/Scripts/Arrastre.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

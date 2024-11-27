@@ -43,17 +43,22 @@ public class TurnManager : MonoBehaviour
         else if (currentTurn == Turn.ManualEnemy)
         {
             Debug.Log("Turno del enemigo manual completado. Turno de los enemigos AI.");
-            currentTurn = Turn.AIEnemy;
+            
             manualEnemy.isEnemyTurn = false;
+            currentTurn = Turn.Player;
+            playerController.isPlayerTurn = true;
 
-            StartCoroutine(EnemyTurnCoroutine());
+            //currentTurn = Turn.AIEnemy;
+            //StartCoroutine(EnemyTurnCoroutine());
+            
         }
-        else if (currentTurn == Turn.AIEnemy)
+        /*else if (currentTurn == Turn.AIEnemy)
         {
             Debug.Log("Turno de los enemigos AI completado. Turno del jugador.");
             currentTurn = Turn.Player;
             playerController.isPlayerTurn = true;
         }
+        */
     }
 
     private IEnumerator EnemyTurnCoroutine()
