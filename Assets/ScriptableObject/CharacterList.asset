@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: CharacterList
   m_EditorClassIdentifier: 
   character:
+  - {fileID: 4445531347886310762, guid: c9e25241f6fd69c4bb946934da58ffb7, type: 3}
   - {fileID: 8258447009307427812, guid: cd0b9edd997eaed47819c921f27de258, type: 3}
   - {fileID: 4445531347886310762, guid: c9e25241f6fd69c4bb946934da58ffb7, type: 3}
+  - {fileID: 8258447009307427812, guid: cd0b9edd997eaed47819c921f27de258, type: 3}
