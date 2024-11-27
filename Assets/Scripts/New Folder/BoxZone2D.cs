@@ -3,6 +3,12 @@
 public class BoxZone2D : MonoBehaviour
 {
     public GameObject currentObject = null; // El objeto que está dentro de esta caja
+    private CajaManager cajaManager; // Referencia a CajaManager para actualizar las cajas abajo cuando se mueven objetos
+
+    private void Start()
+    {
+        cajaManager = FindObjectOfType<CajaManager>(); // Buscar CajaManager
+    }
 
     // Detectar cuando un objeto entra en la caja
     private void OnTriggerEnter2D(Collider2D other)
@@ -27,7 +33,6 @@ public class BoxZone2D : MonoBehaviour
         Debug.Log($"Objeto {other.name} se colocó en la caja.");
     }
 
-
     // Detectar cuando el objeto sale de la caja
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -43,5 +48,21 @@ public class BoxZone2D : MonoBehaviour
     {
         var dragScript = obj.GetComponent<DragObject2D>();
         if (dragScript != null) dragScript.ReturnToOriginalPosition();
+    }
+
+    // Método para mover un objeto de una caja a otra
+    public void MoverObjetoACaja(GameObject objeto, BoxZone2D nuevaCaja)
+    {
+        if (currentObject != null)
+        {
+            // Eliminar objeto de la caja actual
+            currentObject.transform.SetParent(null);
+            currentObject = null;
+        }
+
+        // Mover objeto a la nueva caja
+        nuevaCaja.currentObject = objeto;
+        objeto.transform.SetParent(nuevaCaja.transform);
+        objeto.transform.localPosition = Vector3.zero;
     }
 }
