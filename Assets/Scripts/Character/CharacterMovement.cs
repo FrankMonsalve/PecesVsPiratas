@@ -12,7 +12,8 @@ public class CharacterMovement : MonoBehaviour
 
     public void MoveToCell(Vector3Int targetCell, Tilemap tilemap)
     {
-        Debug.Log(tilemap);
+
+        Debug.Log(tilemap + " MoveToCell");
         // Si ya se movió, no puede mover más
         if (_hasMoved)
         {

@@ -5508,6 +5508,8 @@ MonoBehaviour:
   tilemap: {fileID: 996367911}
   player: {fileID: 1365347124}
   maxMovement: 3
+  attackRange: 2
+  attackDamage: 10
   isPlayerTurn: 1
 --- !u!212 &1365347123
 SpriteRenderer:
@@ -7017,6 +7019,8 @@ MonoBehaviour:
   tilemap: {fileID: 996367911}
   player: {fileID: 1365347124}
   maxMovement: 3
+  attackRange: 1
+  attackDamage: 10
 --- !u!212 &2041485600
 SpriteRenderer:
   m_ObjectHideFlags: 0

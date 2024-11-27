@@ -67,7 +67,7 @@ public class GameTurnManager : MonoBehaviour
 
         foreach (Character character in currentPlayerCharacters)
         {
-            if (!character.Movement.HasMoved)
+            if (!CharacterHasMoved(character))
                 return; // Si hay al menos un personaje que no ha terminado, el turno sigue
         }
 
@@ -96,11 +96,32 @@ public class GameTurnManager : MonoBehaviour
                 {
                     _selectedCharacter = hit.collider.GetComponent<Character>();
                     Debug.Log($"Character selected {_selectedCharacter}");
+
+                    if(CharacterHasMoved(_selectedCharacter))
+                    {
+                        Debug.Log($"Character {_selectedCharacter.name} no tiene movimientos disponibles");
+                        _selectedCharacter = null;
+                        return;
+                    }
+                    
                     return;
+                }else if(_selectedCharacter !=null && IsCurrentPlayerCharacter(hit.collider.GetComponent<Character>()))
+                {
+                    _selectedCharacter = hit.collider.GetComponent<Character>();
+                    Debug.Log($"The Character has bin changed selected {_selectedCharacter}");
+                    if(CharacterHasMoved(_selectedCharacter))
+                    {
+                        Debug.Log($"Character {_selectedCharacter.name} no tiene movimientos disponibles");
+                        _selectedCharacter = null;
+                        return;
+                    }
                 }
 
-                if (_selectedCharacter != null && !_selectedCharacter.Movement.HasMoved)
+            }
+
+            if (_selectedCharacter != null && !_selectedCharacter.Movement.HasMoved)
                 {
+                    Debug.Log("Entra al que envia la acción de movimiento");
                     Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     Vector3Int cellPos = tilemap.WorldToCell(mousePos);
                     _selectedCharacter.Movement.MoveToCell(cellPos, tilemap);
@@ -108,7 +129,6 @@ public class GameTurnManager : MonoBehaviour
 
                     _selectedCharacter = null;
                 }
-            }
 
             CheckTurnEnd(); // Revisa si el turno debe finalizar
         }
@@ -116,5 +136,9 @@ public class GameTurnManager : MonoBehaviour
     private bool IsCurrentPlayerCharacter(Character character)
     {
         return players[_currentPlayerIndex].Contains(character);
+    }
+
+    private bool CharacterHasMoved(Character character){
+       return  character.Movement.HasMoved;
     }
 }
