@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,12 @@ public class CajaManager : MonoBehaviour
     [SerializeField] private Button botonIncrementar; // Botón para incrementar contadores
     [SerializeField] private Button botonDesactivar;  // Botón para desactivar cajas abajo
 
+    public GameObject spawnPoint;  // Referencia al GameObject SpawnPoint en la escena
+    public float offsetX = 2f;
+
+    // Variable para guardar las referencias a los clones generados
+    private List<GameObject> clonesGenerados = new List<GameObject>();
+
     private void Start()
     {
         if (generarPersonajesScript == null)
@@ -35,7 +42,7 @@ public class CajaManager : MonoBehaviour
         if (botonDesactivar != null)
         {
             botonDesactivar.onClick.RemoveAllListeners();
-            botonDesactivar.onClick.AddListener(DesactivarCajasAbajo);
+            botonDesactivar.onClick.AddListener(DesactivarCajasAbajoYGenerarSpawn);
         }
 
         // Activar cajas según el estado inicial
@@ -45,6 +52,9 @@ public class CajaManager : MonoBehaviour
     public void ActivarCajasSegunContador()
     {
         Debug.Log("Activando cajas según contadores...");
+
+        // Eliminar los clones anteriores antes de generar nuevos
+        EliminarClonesGenerados();
 
         // Activar cajas arriba
         ActivarCajas(cajasArriba, objetosArribaActivos);
@@ -82,6 +92,57 @@ public class CajaManager : MonoBehaviour
                 Debug.Log($"Caja {caja.name} desactivada y contenido eliminado.");
             }
         }
+    }
+
+    public void DesactivarCajasAbajoYGenerarSpawn()
+    {
+        Vector3 spawnPosition = spawnPoint.transform.position; // Obtener la posición inicial del spawn
+
+        // Eliminar los clones generados previamente
+        EliminarClonesGenerados();
+
+        // Iterar por todas las cajas de arriba
+        foreach (GameObject caja in cajasArriba)
+        {
+            if (caja != null)
+            {
+                // Verificar si hay un prefab dentro de la caja
+                if (caja.transform.childCount > 0)
+                {
+                    // Obtener el prefab dentro de la caja
+                    GameObject prefabOriginal = caja.transform.GetChild(0).gameObject;
+
+                    // Crear una copia del prefab
+                    GameObject clon = Instantiate(prefabOriginal, spawnPosition, Quaternion.identity);
+
+                    // Añadir la copia a la lista de clones generados
+                    clonesGenerados.Add(clon);
+
+                    // Modificar la posición de la copia en el eje X
+                    spawnPosition.y += offsetX;  // Alinea cada prefab bajo el anterior
+
+                    // Desactivar la caja visualmente (sin destruir el prefab dentro)
+                    caja.SetActive(false);
+                }
+            }
+        }
+
+        // Desactivar las cajas de abajo
+        DesactivarCajasAbajo();
+    }
+
+    private void EliminarClonesGenerados()
+    {
+        // Eliminar todos los clones previamente generados
+        foreach (GameObject clon in clonesGenerados)
+        {
+            Destroy(clon);
+        }
+
+        // Limpiar la lista de clones generados
+        clonesGenerados.Clear();
+
+        Debug.Log("Clones generados eliminados.");
     }
 
     private void ActivarCajas(GameObject[] cajas, int limiteActivos)

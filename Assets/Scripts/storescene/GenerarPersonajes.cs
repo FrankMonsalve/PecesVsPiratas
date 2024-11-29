@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using System.Linq; // Necesario para usar LINQ
 
@@ -18,8 +17,8 @@ public class GenerarPersonajes : MonoBehaviour
         // Eliminar personajes actuales en las cajas de abajo
         foreach (Transform caja in cajasAbajo)
         {
-            // Limpiar todos los hijos dentro de la caja, pero solo si está vacía
-            if (caja.childCount == 0)
+            // Verificar si la caja ya tiene un personaje
+            if (caja.childCount == 0) // Solo generar un personaje si la caja está vacía
             {
                 int indiceAleatorio = Random.Range(0, prefabsPersonajes.Length); // Seleccionar un prefab aleatorio
                 GameObject personaje = Instantiate(prefabsPersonajes[indiceAleatorio], caja.position, Quaternion.identity);
