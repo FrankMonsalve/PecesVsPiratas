@@ -119,7 +119,7 @@ public class CajaManager : MonoBehaviour
                     clonesGenerados.Add(clon);
 
                     // Modificar la posición de la copia en el eje X
-                    spawnPosition.y += offsetX;  // Alinea cada prefab bajo el anterior
+                    spawnPosition.x += offsetX;  // Alinea cada prefab bajo el anterior
 
                     // Desactivar la caja visualmente (sin destruir el prefab dentro)
                     caja.SetActive(false);

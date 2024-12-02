@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1432758197738270847}
   - component: {fileID: 629637674790060456}
   - component: {fileID: 4598123444749794080}
+  - component: {fileID: -7326386424695662960}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Personaje
@@ -171,3 +172,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-7326386424695662960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3801832996552954654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b5ae26a793fe6c4dab4a3d9c516af36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forma: 
+  color: {r: 1, g: 1, b: 1, a: 1}
