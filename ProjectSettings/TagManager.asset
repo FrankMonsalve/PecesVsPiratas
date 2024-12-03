@@ -9,15 +9,15 @@ TagManager:
   - Arrastrable
   - Objeto
   - BoxUp
-  - Personaje
+  - Obstacle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - LayerNodo
   - Water
   - UI
-  - 
+  - InteractableLayer
   - 
   - 
   - 
@@ -47,6 +47,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 1
-    uniqueID: 2476158901
+  - name: Nodo
+    uniqueID: 1528254859
+    locked: 0
+  - name: Objetos
+    uniqueID: 2300717473
+    locked: 0
+  - name: UI
+    uniqueID: 3401739597
     locked: 0
