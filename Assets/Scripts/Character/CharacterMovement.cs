@@ -12,11 +12,6 @@ public class CharacterMovement : MonoBehaviour
     public int Movement => _movement;
     public int RemainingMovement => _remainingMovement;
 
-    public void DrecreaseMovement(int value)
-    {
-        _remainingMovement -= value;
-    }
-
     public void MoveToCell(Vector3Int targetCell, Tilemap tilemap, int cost)
     {
 
