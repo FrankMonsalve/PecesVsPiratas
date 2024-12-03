@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2571296393747047425}
   - component: {fileID: 2236174120696582831}
-  - component: {fileID: -932701632252776781}
-  - component: {fileID: -7333586455363092561}
-  - component: {fileID: 5953978319726727746}
-  - component: {fileID: 3095594458659947860}
+  - component: {fileID: -4120319899627580080}
+  - component: {fileID: 8791182917998691269}
+  - component: {fileID: -632613559923850930}
+  - component: {fileID: -5515606565452703144}
   m_Layer: 0
   m_Name: Square (4)
-  m_TagString: Arrastrable
+  m_TagString: Personaje
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-932701632252776781
+--- !u!114 &-4120319899627580080
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,10 +97,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6999697285940908149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa884ae3d60a34b408f7887890780fea, type: 3}
+  m_Script: {fileID: 11500000, guid: 9714f8f2f2bf3254cac834709758cd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &-7333586455363092561
+--- !u!61 &8791182917998691269
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +145,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &5953978319726727746
+--- !u!50 &-632613559923850930
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3095594458659947860
+--- !u!114 &-5515606565452703144
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,6 +181,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6999697285940908149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 375aa287c5c3ed04487eb12fb53c94cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b5ae26a793fe6c4dab4a3d9c516af36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forma: rectangulo
+  color: rojo

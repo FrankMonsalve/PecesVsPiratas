@@ -10,14 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1099317460997718596}
   - component: {fileID: 5921768568092345248}
-  - component: {fileID: 3125822394760330860}
-  - component: {fileID: 3947668165870861288}
-  - component: {fileID: -3018143253529876955}
-  - component: {fileID: 6843538175432196105}
-  - component: {fileID: -3278060988667462441}
+  - component: {fileID: 6302808050934842411}
+  - component: {fileID: 3208195100487854243}
+  - component: {fileID: 5238111545238545048}
+  - component: {fileID: 6942484085112882229}
   m_Layer: 0
   m_Name: Capsule (3)
-  m_TagString: Arrastrable
+  m_TagString: Personaje
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3125822394760330860
+--- !u!114 &6302808050934842411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,10 +97,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 516347038849191002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa884ae3d60a34b408f7887890780fea, type: 3}
+  m_Script: {fileID: 11500000, guid: 9714f8f2f2bf3254cac834709758cd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &3947668165870861288
+--- !u!61 &3208195100487854243
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +145,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!50 &-3018143253529876955
+--- !u!50 &5238111545238545048
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -173,7 +172,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6843538175432196105
+--- !u!114 &6942484085112882229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,18 +181,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 516347038849191002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d639aa89677692d479147647bb9433df, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b5ae26a793fe6c4dab4a3d9c516af36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-3278060988667462441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 516347038849191002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 375aa287c5c3ed04487eb12fb53c94cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  forma: Capsula
+  color: rosa
