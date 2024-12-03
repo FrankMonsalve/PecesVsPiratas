@@ -1,10 +1,10 @@
 using UnityEngine;
-using System.Linq; // Necesario para usar LINQ
+using System.Linq; 
 
 public class GenerarPersonajes : MonoBehaviour
 {
-    public GameObject[] prefabsPersonajes; // Array de prefabs de personajes
-    private Transform[] cajasAbajo; // Array de cajas abajo para posicionar los personajes
+    public GameObject[] prefabsPersonajes; 
+    private Transform[] cajasAbajo; 
 
     public void GenerarPersonajesEnCajas()
     {

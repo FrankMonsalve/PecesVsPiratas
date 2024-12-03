@@ -1,29 +1,50 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class CajaManager : MonoBehaviour
 {
     [Header("Referencias a Cajas")]
-    public GameObject[] cajasArriba; // Referencia a las cajas de arriba
-    public GameObject[] cajasAbajo; // Referencia a las cajas de abajo
+    public GameObject[] cajasArriba;
+    public GameObject[] cajasAbajo;
 
     [Header("Contadores")]
-    public static int objetosArribaActivos = 1; // Cantidad inicial de cajas activas arriba
-    public static int objetosAbajoActivos = 3; // Cantidad inicial de cajas activas abajo
+    public static int objetosArribaActivos = 1;
+    public static int objetosAbajoActivos = 3;
 
     [Header("Generador de Personajes")]
-    public GenerarPersonajes generarPersonajesScript; // Referencia al script de generación de personajes
+    public GenerarPersonajes generarPersonajesScript;
 
     [Header("UI Botones")]
-    [SerializeField] private Button botonIncrementar; // Botón para incrementar contadores
-    [SerializeField] private Button botonDesactivar;  // Botón para desactivar cajas abajo
+    [SerializeField] private Button botonIncrementar;
+    [SerializeField] private Button botonDesactivar;
 
-    public GameObject spawnPoint;  // Referencia al GameObject SpawnPoint en la escena
+    [Header("UI Elementos")]
+    [SerializeField] private Button botonNext;
+    [SerializeField] private Button botonPrevious;
+    [SerializeField] private TMP_Text textForma;
+    [SerializeField] private TMP_Text textColor;
+    [SerializeField] private Transform characterPosition;
+    [SerializeField] private TMP_Text mensajeUI;
+
+    [Header("Menu de Selección de Personaje")]
+    public CharacterSelectionMenu characterSelectionMenu;
+
+    public GameObject spawnPoint;
     public float offsetX = 2f;
 
-    // Variable para guardar las referencias a los clones generados
     private List<GameObject> clonesGenerados = new List<GameObject>();
+
+    private IEnumerator EsconderMensajeTrasTiempo(float tiempo)
+    {
+        yield return new WaitForSeconds(tiempo);
+        if (mensajeUI != null)
+        {
+            mensajeUI.gameObject.SetActive(false); // Ocultar el mensaje después del tiempo especificado
+        }
+    }
 
     private void Start()
     {
@@ -44,8 +65,6 @@ public class CajaManager : MonoBehaviour
             botonDesactivar.onClick.RemoveAllListeners();
             botonDesactivar.onClick.AddListener(DesactivarCajasAbajoYGenerarSpawn);
         }
-
-        // Activar cajas según el estado inicial
         ActivarCajasSegunContador();
     }
 
@@ -53,23 +72,29 @@ public class CajaManager : MonoBehaviour
     {
         Debug.Log("Activando cajas según contadores...");
 
-        // Eliminar los clones anteriores antes de generar nuevos
         EliminarClonesGenerados();
 
-        // Activar cajas arriba
         ActivarCajas(cajasArriba, objetosArribaActivos);
 
-        // Activar cajas abajo
         ActivarCajas(cajasAbajo, objetosAbajoActivos);
 
-        // Generar personajes SOLO después de actualizar las cajas
         generarPersonajesScript.GenerarPersonajesEnCajas();
+
+        ActivarElementosUI();
+
+        if (characterSelectionMenu.CharacterPrefabInstance != null)
+        {
+            characterSelectionMenu.CharacterPrefabInstance.SetActive(true);
+        }
     }
 
     public void IncrementarContadores()
     {
-        if (objetosArribaActivos < cajasArriba.Length) objetosArribaActivos++;
-        if (objetosAbajoActivos < cajasAbajo.Length) objetosAbajoActivos++;
+        if (objetosArribaActivos < cajasArriba.Length)
+            objetosArribaActivos++;
+
+        if (objetosAbajoActivos < cajasAbajo.Length)
+            objetosAbajoActivos++;
 
         Debug.Log($"Contadores incrementados: Arriba {objetosArribaActivos}, Abajo {objetosAbajoActivos}");
         ActivarCajasSegunContador();
@@ -77,13 +102,33 @@ public class CajaManager : MonoBehaviour
 
     public void DesactivarCajasAbajo()
     {
+        // Verificar si todas las cajas activas de arriba tienen un prefab.
+        bool todasLasCajasArribaActivasTienenPrefabs = true;
+
+        foreach (GameObject caja in cajasArriba)
+        {
+            if (caja != null && caja.activeSelf && caja.transform.childCount == 0) // Solo revisar las cajas activas
+            {
+                todasLasCajasArribaActivasTienenPrefabs = false;
+                break;
+            }
+        }
+
+        // Si no todas las cajas activas de arriba están llenas, no desactivar las cajas de abajo.
+        if (!todasLasCajasArribaActivasTienenPrefabs)
+        {
+            Debug.Log("No todas las cajas de arriba están llenas, no desactivando las cajas de abajo.");
+            return; // Salir del método sin hacer nada si no están todas llenas.
+        }
+
+        // Si todas las cajas activas de arriba están llenas, proceder con la desactivación de las cajas de abajo.
         foreach (GameObject caja in cajasAbajo)
         {
             if (caja != null)
             {
                 caja.SetActive(false);
 
-                // Eliminar contenido de la caja
+                // Eliminar cualquier contenido de la caja de abajo.
                 while (caja.transform.childCount > 0)
                 {
                     DestroyImmediate(caja.transform.GetChild(0).gameObject);
@@ -94,66 +139,115 @@ public class CajaManager : MonoBehaviour
         }
     }
 
+
     public void DesactivarCajasAbajoYGenerarSpawn()
     {
-        Vector3 spawnPosition = spawnPoint.transform.position; // Obtener la posición inicial del spawn
+        // Verificar si todas las cajas activas de arriba tienen un prefab.
+        bool todasLasCajasArribaActivasTienenPrefabs = true;
 
-        // Eliminar los clones generados previamente
-        EliminarClonesGenerados();
-
-        // Iterar por todas las cajas de arriba
         foreach (GameObject caja in cajasArriba)
         {
-            if (caja != null)
+            if (caja != null && caja.activeSelf && caja.transform.childCount == 0) // Solo revisar las cajas activas
             {
-                // Verificar si hay un prefab dentro de la caja
+                todasLasCajasArribaActivasTienenPrefabs = false;
+                break;
+            }
+        }
+
+        // Si no todas las cajas activas de arriba están llenas, no hacer nada.
+        if (!todasLasCajasArribaActivasTienenPrefabs)
+        {
+            Debug.Log("Debes seleccionar más jugadores.");
+            MostrarMensajeUI("Debes seleccionar más jugadores."); // Mostrar mensaje en la UI.
+            return; // Salir del método si no hay suficientes prefabs.
+        }
+
+        // Proceder a generar clones solo si todas las cajas activas de arriba tienen prefabs.
+        Vector3 spawnPosition = spawnPoint.transform.position;
+
+        // Eliminar clones generados previamente.
+        EliminarClonesGenerados();
+
+        foreach (GameObject caja in cajasArriba)
+        {
+            if (caja != null && caja.activeSelf) // Solo procesar las cajas activas
+            {
                 if (caja.transform.childCount > 0)
                 {
-                    // Obtener el prefab dentro de la caja
                     GameObject prefabOriginal = caja.transform.GetChild(0).gameObject;
 
-                    // Crear una copia del prefab
                     GameObject clon = Instantiate(prefabOriginal, spawnPosition, Quaternion.identity);
 
-                    // Añadir la copia a la lista de clones generados
                     clonesGenerados.Add(clon);
 
-                    // Modificar la posición de la copia en el eje X
-                    spawnPosition.x += offsetX;  // Alinea cada prefab bajo el anterior
+                    spawnPosition.x += offsetX; // Asegurar que los clones se posicionen en X de forma progresiva.
 
-                    // Desactivar la caja visualmente (sin destruir el prefab dentro)
-                    caja.SetActive(false);
+                    caja.SetActive(false); // Desactivar la caja arriba.
                 }
             }
         }
 
-        // Desactivar las cajas de abajo
+        // Desactivar las cajas de abajo solo si todas las cajas activas de arriba tienen prefabs.
         DesactivarCajasAbajo();
+
+        // Desactivar los elementos de la UI.
+        DesactivarElementosUI();
+
+        // Desactivar el prefab de selección de personaje.
+        if (characterSelectionMenu.CharacterPrefabInstance != null)
+        {
+            characterSelectionMenu.CharacterPrefabInstance.SetActive(false);
+        }
     }
+
 
     private void EliminarClonesGenerados()
     {
-        // Eliminar todos los clones previamente generados
         foreach (GameObject clon in clonesGenerados)
         {
             Destroy(clon);
         }
 
-        // Limpiar la lista de clones generados
         clonesGenerados.Clear();
-
-        Debug.Log("Clones generados eliminados.");
     }
 
-    private void ActivarCajas(GameObject[] cajas, int limiteActivos)
+    public void ActivarElementosUI()
+    {
+        if (botonNext != null) botonNext.gameObject.SetActive(true);
+        if (botonPrevious != null) botonPrevious.gameObject.SetActive(true);
+        if (textForma != null) textForma.gameObject.SetActive(true);
+        if (textColor != null) textColor.gameObject.SetActive(true);
+    }
+
+    public void DesactivarElementosUI()
+    {
+        if (botonNext != null) botonNext.gameObject.SetActive(false);
+        if (botonPrevious != null) botonPrevious.gameObject.SetActive(false);
+        if (textForma != null) textForma.gameObject.SetActive(false);
+        if (textColor != null) textColor.gameObject.SetActive(false);
+    }
+
+    private void ActivarCajas(GameObject[] cajas, int cantidad)
     {
         for (int i = 0; i < cajas.Length; i++)
         {
             if (cajas[i] != null)
             {
-                cajas[i].SetActive(i < limiteActivos);
-                Debug.Log($"Caja {cajas[i].name} {(i < limiteActivos ? "activada" : "desactivada")}.");
+                cajas[i].SetActive(i < cantidad);
+                Debug.Log($"Caja {cajas[i].name} {(i < cantidad ? "activada" : "desactivada")}.");
             }
+        }
+    }
+
+    private void MostrarMensajeUI(string mensaje)
+    {
+        if (mensajeUI != null)
+        {
+            mensajeUI.text = mensaje;
+            mensajeUI.gameObject.SetActive(true);
+
+            // Opcional: Ocultar el mensaje después de unos segundos.
+            StartCoroutine(EsconderMensajeTrasTiempo(3f));
         }
     }
 }

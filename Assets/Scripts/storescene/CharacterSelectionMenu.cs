@@ -1,73 +1,102 @@
 using UnityEngine;
-using TMPro;  // Necesario para trabajar con TextMeshPro
+using TMPro;
 
 public class CharacterSelectionMenu : MonoBehaviour
 {
-    public GameObject[] playerObjects;  // Los prefabs de los personajes
+    public GameObject[] characterPrefabs;
+    public Transform CharacterPosition;
     public int selectedCharacter = 0;
 
-    // Variables para el texto de UI utilizando TextMeshPro
-    public TMP_Text textForma;   // Referencia al TextMeshPro de Forma
-    public TMP_Text textColor;   // Referencia al TextMeshPro de Color
+    public TMP_Text textForma;
+    public TMP_Text textColor;
 
+    private GameObject currentCharacterInstance;
     private string selectedCharacterDataName = "SelectedCharacter";
+
+    private bool isInMenu = true;
+
+    public GameObject CharacterPrefabInstance => currentCharacterInstance; // Propiedad para acceder al prefab generado
 
     void Start()
     {
-        HideAllCharacters();
-
         selectedCharacter = PlayerPrefs.GetInt(selectedCharacterDataName, 0);
 
-        playerObjects[selectedCharacter].SetActive(true);
+        SpawnCharacter(selectedCharacter);
 
-        // Mostrar la información del primer personaje seleccionado
         UpdateCharacterInfo(selectedCharacter);
     }
 
-    private void HideAllCharacters()
+    private void SpawnCharacter(int index)
     {
-        foreach (GameObject g in playerObjects)
+        // Eliminar la instancia actual si existe
+        if (currentCharacterInstance != null)
         {
-            g.SetActive(false);
+            Destroy(currentCharacterInstance);
+        }
+        currentCharacterInstance = Instantiate(characterPrefabs[index], CharacterPosition.position, Quaternion.identity);
+
+        if (isInMenu) // Solo desactivamos los componentes si es un personaje del menú
+        {
+            Rigidbody rb = currentCharacterInstance.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.isKinematic = true;
+            }
+
+            BoxCollider boxCollider = currentCharacterInstance.GetComponent<BoxCollider>();
+            if (boxCollider != null)
+            {
+                boxCollider.enabled = false; // Desactiva el BoxCollider
+            }
+
+            Component[] components = currentCharacterInstance.GetComponents<Component>();
+            foreach (var component in components)
+            {
+                if (component is Rigidbody || component is BoxCollider)
+                    continue; // No desactivar Rigidbody ni BoxCollider
+
+                if (component is MonoBehaviour)
+                {
+                    ((MonoBehaviour)component).enabled = false;
+                }
+            }
         }
     }
 
     public void NextCharacter()
     {
-        playerObjects[selectedCharacter].SetActive(false);
         selectedCharacter++;
-        if (selectedCharacter >= playerObjects.Length)
+        if (selectedCharacter >= characterPrefabs.Length)
         {
             selectedCharacter = 0;
         }
-        playerObjects[selectedCharacter].SetActive(true);
-
-        // Actualizar la información
+        SpawnCharacter(selectedCharacter);
         UpdateCharacterInfo(selectedCharacter);
     }
 
     public void PreviousCharacter()
     {
-        playerObjects[selectedCharacter].SetActive(false);
         selectedCharacter--;
         if (selectedCharacter < 0)
         {
-            selectedCharacter = playerObjects.Length - 1;
+            selectedCharacter = characterPrefabs.Length - 1;
         }
-        playerObjects[selectedCharacter].SetActive(true);
 
-        // Actualizar la información
+        SpawnCharacter(selectedCharacter);
+
         UpdateCharacterInfo(selectedCharacter);
     }
 
-    // Método para actualizar los textos con la información de forma y color
     private void UpdateCharacterInfo(int characterIndex)
     {
-        // Obtener el script Personaje del prefab actual
-        Personaje personaje = playerObjects[characterIndex].GetComponent<Personaje>();
-
-        // Actualizar los textos en la UI con TextMeshPro
+        Personaje personaje = currentCharacterInstance.GetComponent<Personaje>();
         textForma.text = "Forma: " + personaje.Forma;
         textColor.text = "Color: " + personaje.Color;
+    }
+
+    public void IncrementarNumeroDeCajas()
+    {
+        isInMenu = false;
+        isInMenu = true;
     }
 }
