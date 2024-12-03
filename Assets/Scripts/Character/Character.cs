@@ -9,23 +9,29 @@ public class Character : MonoBehaviour
     [SerializeField] private int _defaultHealth;
     private int _maxHealth;
     [SerializeField] private int _health;
-    [SerializeField] private int _defaultAttack;
-    private int _maxAttack;
-    [SerializeField] private int _attack;
-    [SerializeField] private int _maxMovement;
+    [SerializeField] private int _defaultDamage;
+    private int _maxDamage;
+    [SerializeField] private int _Damage;
+
+    [SerializeField] int _layerMask;
+    
     [SerializeField] private Animator _animator;
 
     [SerializeField] private CharacterMovement _characterMovement;
 
     [SerializeField] private List<Node> _node;
 
+    [SerializeField] private CharacterUI _ui;
+
+    public LayerMask LMask => _layerMask;
+
     public string Nombre => _nombre;
     public int Id => _id;
     public int DefaultHealth => _defaultHealth;
-    public int DefaulAttack => _defaultAttack;
+    public int DefaulAttack => _defaultDamage;
 
     public int Health => _health;
-    public int Attack => _attack;
+    public int Damage => _Damage;
 
     public CharacterMovement Movement => _characterMovement;
 
@@ -35,25 +41,29 @@ public class Character : MonoBehaviour
 
     public List<Node> Node => _node;
 
+    private void Awake() {
+        _layerMask = LayerMask.GetMask("InteractableLayer");
+    }
+
     public void Setup(int addHealth, int addAttack)
     {
-        _maxHealth = addHealth + _defaultAttack;
-        _maxAttack = addAttack + _defaultAttack;
+        _maxHealth = addHealth + _defaultHealth;
+        _maxDamage = addAttack + _defaultDamage;
 
         _health = _maxHealth;
-        _attack = _maxAttack;
-
+        _Damage = _maxDamage;
 
         IsAlive = true;
+        OutOfTurn();
     }
 
     public void Setup()
     {
-        _maxHealth = _defaultAttack;
-        _maxAttack = _defaultAttack;
+        _maxHealth = _defaultHealth;
+        _maxDamage = _defaultDamage;
 
-        _health = _defaultHealth;
-        _attack = _defaultAttack;
+        _health = _maxHealth;
+        _Damage = _maxDamage;
         IsAlive = true;
 
         OutOfTurn();
@@ -62,9 +72,15 @@ public class Character : MonoBehaviour
     // Método para aplicar daño
     public void TakeDamage(int damage)
     {
-        Debug.Log(gameObject.name + $" Daño x ¡¡{damage}!!");
+
         _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
-        if (_health <= 0)
+
+        float currenthealth = (float)_health/_maxHealth;
+        Debug.Log(currenthealth);
+        _ui.TakeDamage(currenthealth);
+
+        Debug.Log(gameObject.name + $" Daño x ¡¡{damage}!!");
+        if (_health < 1)
         {
             IsAlive = false;
             Die();
@@ -99,6 +115,17 @@ public class Character : MonoBehaviour
         Debug.Log(gameObject.name + " ha muerto.");
         
         Destroy(gameObject); 
+    }
+
+    public void Attack(Character character)
+    {
+        if(_characterMovement.RemainingMovement > 0)
+        {
+            Debug.Log($"{Nombre} ataca a {character.Nombre}");
+            _characterMovement.Attack();
+
+            character.TakeDamage(Damage);
+        }
     }
 
     // Método de ataque

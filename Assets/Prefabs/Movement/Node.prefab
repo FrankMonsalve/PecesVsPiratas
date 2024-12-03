@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 426681601730814027}
   - component: {fileID: 1371031757737480473}
   - component: {fileID: 8736916376265571872}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1528254859
+  m_SortingLayer: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: -597716342, guid: cbbc1c09ed006714ba75bfbffc0d860e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,8 +101,12 @@ MonoBehaviour:
   _character: {fileID: 0}
   _Position: {x: 0, y: 0, z: 0}
   _cost: 1
-  isAvailable: 0
+  _isAvailable: 0
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   _spriteRenderer: {fileID: 426681601730814027}
+  _tagObstacle: Obstacle
 --- !u!58 &8736916376265571872
 CircleCollider2D:
   m_ObjectHideFlags: 0
