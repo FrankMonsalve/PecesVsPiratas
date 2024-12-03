@@ -1,32 +1,23 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
 public class GameTurnManager : MonoBehaviour
 {
     public static GameTurnManager Instance; // Singleton para acceso global
 
     [SerializeField] private Tilemap _tilemap; // Referencia al Tilemap
-    [SerializeField] private List<List<Character>> _players; // Lista de listas de personajes
-    public LayerMask _layerMaskCharacter;
-    public LayerMask _layerMaskNode;
+    [SerializeField] private List<List<Character>> players; // Lista de listas de personajes
     private int _currentPlayerIndex = 0; // Índice del jugador actual
     private Character _selectedCharacter;
     public Tilemap Tilemap => _tilemap;
-    
 
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
-        else{
+        else
             Destroy(gameObject);
-        }
-
-        _layerMaskNode = LayerMask.GetMask("LayerNodo");
-        _layerMaskCharacter = LayerMask.GetMask("InteractableLayer");
-            
     }
 
     private void Start()
@@ -55,16 +46,14 @@ public class GameTurnManager : MonoBehaviour
             return;
         }
 
-        _players = playerLists;
-        Debug.Log("Lista de Jugadores cargada correctamente.");
-
-
+        players = playerLists;
+        Debug.Log("Jugadores configurados correctamente.");
     }
 
     // Inicia el turno del jugador actual
     public void StartPlayerTurn()
     {
-        List<Character> currentPlayerCharacters = _players[_currentPlayerIndex];
+        List<Character> currentPlayerCharacters = players[_currentPlayerIndex];
 
         foreach (Character character in currentPlayerCharacters)
         {
@@ -76,7 +65,7 @@ public class GameTurnManager : MonoBehaviour
 
     public void CheckTurnEnd()
     {
-        List<Character> currentPlayerCharacters = _players[_currentPlayerIndex];
+        List<Character> currentPlayerCharacters = players[_currentPlayerIndex];
 
         foreach (Character character in currentPlayerCharacters)
         {
@@ -91,24 +80,9 @@ public class GameTurnManager : MonoBehaviour
     {
         Debug.Log($"Todos los personajes del Jugador {_currentPlayerIndex + 1} han terminado su turno.");
 
-
-        ChangePlayer();
-    }
-
-    private void ChangePlayer()
-    {
-        Debug.Log("Cambiando de Jugador");
-        if(_currentPlayerIndex >= _players.Count - 1)
-        {
-            _currentPlayerIndex = 0;
-            
-        }else{
-            _currentPlayerIndex++;
-        }
-        Debug.Log($"Jugador Seleccionado: {_currentPlayerIndex}");
+        _currentPlayerIndex = (_currentPlayerIndex + 1) % players.Count;
 
         StartPlayerTurn();
-
     }
 
     private void HandlePlayerInput()
@@ -118,39 +92,25 @@ public class GameTurnManager : MonoBehaviour
 
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            RaycastHit2D hit;
-
-            if(_selectedCharacter == null)
-            {
-                hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero, 1f, _layerMaskCharacter);
-            }else 
-            {
-                hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero, 1f, _layerMaskNode);
-            }
-
-            Debug.Log(hit.collider);
-            Debug.DrawRay(hit.centroid, Vector2.zero * 1f, Color.red, 2f);
+            RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
 
             if (hit.collider != null)
             {
                 if (_selectedCharacter == null && IsCharacterInCurrentPlayer(hit.collider.GetComponent<Character>()))
                 {
                     _selectedCharacter = hit.collider.GetComponent<Character>();
-
-
+                    Debug.Log($"dentro del if in turn{_selectedCharacter}");
+                    _selectedCharacter.InTurn();
                     Debug.Log($"Character selected {_selectedCharacter}");
 
                     if (CharacterHasMoved(_selectedCharacter))
                     {
-                        
                         Debug.Log($"Character {_selectedCharacter.name} no tiene movimientos disponibles");
 
                         _selectedCharacter.OutOfTurn();
                         _selectedCharacter = null;
                         return;
                     }
-
-                    _selectedCharacter.InTurn();
 
                     return;
                 }
@@ -177,25 +137,23 @@ public class GameTurnManager : MonoBehaviour
             {
                 if (hit.collider == null)
                 {
-                    Debug.Log("1");
-
                     CheckOutOfTurnCharacter();
                     _selectedCharacter = null;
                     return;
                 }
-
                 Debug.Log("Entra al que envia la acción de movimiento");
                 if (hit.collider.TryGetComponent<Node>(out Node node))
                 {
-                    Debug.Log("2");
                     node.Action();
                 }
+
 
                 //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 //_selectedCharacter.Movement.MoveToCell(cellPos, _tilemap);
                 //Debug.Log($"Character {_selectedCharacter.name} Se movio a la casilla {cellPos}");
                 _selectedCharacter.OutOfTurn();
                 _selectedCharacter = null;
+
 
             }
 
@@ -205,14 +163,14 @@ public class GameTurnManager : MonoBehaviour
 
     public void CheckOutOfTurnCharacter()
     {
-        foreach(Character character in _players[_currentPlayerIndex])
+        foreach(Character character in players[_currentPlayerIndex])
         {
             character.OutOfTurn();
         }
     }
     public bool IsCharacterInCurrentPlayer(Character character)
     {
-        return _players[_currentPlayerIndex].Contains(character);
+        return players[_currentPlayerIndex].Contains(character);
     }
 
     private bool CharacterHasMoved(Character character)
