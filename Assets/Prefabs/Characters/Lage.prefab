@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7523222951328910395}
   - component: {fileID: 8794299637168387376}
   - component: {fileID: 6318131268779354995}
-  - component: {fileID: 6362021301141578662}
   - component: {fileID: 6852612783860731302}
   - component: {fileID: 2780171802589933281}
   m_Layer: 0
@@ -29,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039942146328440482}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.565, y: 1.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &8794299637168387376
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -109,23 +108,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6362021301141578662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2039942146328440482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d62f84a5de5a6f7418ed584ba29c59f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitName: 
-  unitLevel: 0
-  damage: 0
-  maxHealth: 0
-  currentHealth: 0
 --- !u!114 &6852612783860731302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,14 +123,13 @@ MonoBehaviour:
   _nombre: Lage
   _id: 2
   _defaultHealth: 110
-  _maxHealth: 0
   _health: 0
   _defaultAttack: 22
-  _maxAttack: 0
   _attack: 0
   _maxMovement: 0
   _animator: {fileID: 6318131268779354995}
   _characterMovement: {fileID: 2780171802589933281}
+  _node: []
 --- !u!114 &2780171802589933281
 MonoBehaviour:
   m_ObjectHideFlags: 0
