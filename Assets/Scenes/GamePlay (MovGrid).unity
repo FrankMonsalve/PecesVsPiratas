@@ -1672,7 +1672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 385634481}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: boxesUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1712,7 +1712,7 @@ GameObject:
   - component: {fileID: 471631652}
   - component: {fileID: 471631655}
   - component: {fileID: 471631653}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: box (2)
   m_TagString: boxUp
   m_Icon: {fileID: 0}
@@ -2648,7 +2648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 666873401}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: boxesDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3566,7 +3566,7 @@ GameObject:
   - component: {fileID: 917687085}
   - component: {fileID: 917687088}
   - component: {fileID: 917687086}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: box (1)
   m_TagString: boxUp
   m_Icon: {fileID: 0}
@@ -5246,8 +5246,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPrefabs:
-  - {fileID: 5544315435533507114, guid: 3d6ac4e52908ea14da27e373132a5404, type: 3}
-  - {fileID: 5021405999653485664, guid: 40e556d7e600d044287b7af1b0cf5606, type: 3}
+  - {fileID: 6275484052519653912, guid: c9e25241f6fd69c4bb946934da58ffb7, type: 3}
+  - {fileID: 3081216464031183031, guid: cd0b9edd997eaed47819c921f27de258, type: 3}
   CharacterPosition: {fileID: 655209789}
   selectedCharacter: 0
   textForma: {fileID: 13878047}
@@ -8790,7 +8790,7 @@ GameObject:
   - component: {fileID: 1657926261}
   - component: {fileID: 1657926264}
   - component: {fileID: 1657926262}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: box (3)
   m_TagString: boxUp
   m_Icon: {fileID: 0}
@@ -8934,7 +8934,7 @@ GameObject:
   - component: {fileID: 1697912118}
   - component: {fileID: 1697912121}
   - component: {fileID: 1697912119}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: box (4)
   m_TagString: boxUp
   m_Icon: {fileID: 0}
@@ -9111,8 +9111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabsPersonajes:
-  - {fileID: 5544315435533507114, guid: 3d6ac4e52908ea14da27e373132a5404, type: 3}
-  - {fileID: 5021405999653485664, guid: 40e556d7e600d044287b7af1b0cf5606, type: 3}
+  - {fileID: 6275484052519653912, guid: c9e25241f6fd69c4bb946934da58ffb7, type: 3}
+  - {fileID: 3081216464031183031, guid: cd0b9edd997eaed47819c921f27de258, type: 3}
 --- !u!1 &1901162213
 GameObject:
   m_ObjectHideFlags: 0
@@ -9125,7 +9125,7 @@ GameObject:
   - component: {fileID: 1901162215}
   - component: {fileID: 1901162218}
   - component: {fileID: 1901162216}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: box (5)
   m_TagString: boxUp
   m_Icon: {fileID: 0}
@@ -10747,7 +10747,7 @@ GameObject:
   - component: {fileID: 2013845079}
   - component: {fileID: 2013845082}
   - component: {fileID: 2013845080}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: box (6)
   m_TagString: boxUp
   m_Icon: {fileID: 0}

@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3112881028346341545, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+      propertyPath: color
+      value: naranja
+      objectReference: {fileID: 0}
+    - target: {fileID: 3112881028346341545, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+      propertyPath: forma
+      value: Aguila
+      objectReference: {fileID: 0}
     - target: {fileID: 3271954274815661353, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

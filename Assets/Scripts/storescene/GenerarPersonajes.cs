@@ -21,7 +21,9 @@ public class GenerarPersonajes : MonoBehaviour
             if (caja.childCount == 0) // Solo generar un personaje si la caja está vacía
             {
                 int indiceAleatorio = Random.Range(0, prefabsPersonajes.Length); // Seleccionar un prefab aleatorio
+               
                 GameObject personaje = Instantiate(prefabsPersonajes[indiceAleatorio], caja.position, Quaternion.identity);
+                personaje.GetComponent<Character>().Setup();
                 personaje.transform.SetParent(caja); // Asignar al transform de la caja
                 Debug.Log($"Generado {personaje.name} en la caja {caja.name}");
             }
