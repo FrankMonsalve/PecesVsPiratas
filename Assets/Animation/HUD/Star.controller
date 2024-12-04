@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HaertEmenty
+  m_Name: StarEmenty
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f36f563f3b7e57d4d8b13a7aea165e71, type: 2}
+  m_Motion: {fileID: 7400000, guid: 038c3d443c6a0e449ab9dfd962a7c217, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -55,7 +55,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Heart
+  m_Name: Star
   m_Speed: 1
   m_CycleOffset: 1
   m_Transitions: []
@@ -68,7 +68,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: fa9084813feefc9448f6c8a75c3c4c7a, type: 2}
+  m_Motion: {fileID: 7400000, guid: 211f52aba3d6c0d4a90faadac05baf14, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
