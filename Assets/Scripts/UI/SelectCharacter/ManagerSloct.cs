@@ -16,6 +16,8 @@ public class ManagerSloct : MonoBehaviour
 
     [SerializeField] GameObject canvasStore;
 
+    [SerializeField] Transform[] _pointPlayers;
+
     [SerializeField] InstanteateCharacter _instanteateCharacter;
 
     [SerializeField] Button playBtn;
@@ -24,6 +26,7 @@ public class ManagerSloct : MonoBehaviour
 
     private void Awake() {
         _currentPlayer = 0;
+        playBtn.onClick.AddListener(Buy);
     }
 
     public void Setup()
@@ -32,7 +35,7 @@ public class ManagerSloct : MonoBehaviour
 
         canvasStore.SetActive(true);
         GameTurnManager.Instance.UpdatePlayerInturnUI(_currentPlayer + 1);
-        playBtn.onClick.AddListener(Buy);
+        
     }
 
     public void UpdateCurrentSloct(Sloct sloct)
@@ -80,7 +83,7 @@ public class ManagerSloct : MonoBehaviour
 
     public void SceneSetup()
     {
-        UpdateSloctUI();
+        //UpdateSloctUI();
 
         foreach (Sloct sloct in _SloctCharacterList)
         {
@@ -112,6 +115,7 @@ public class ManagerSloct : MonoBehaviour
         }
 
         int indexA = 0;
+        Debug.Log($"list character {_listCharacter.Count} | list character buy {_listCharacterBuy}");
         foreach(Character character in _listCharacter)
         {
 
@@ -144,27 +148,32 @@ public class ManagerSloct : MonoBehaviour
         _instanteateCharacter.Inicializate();
 
         CanvasOff();
-
         
         GameTurnManager.Instance.Initializate();
     }
 
     public void Buy()
     {
+        int index = 0;
         foreach(Character character in _listCharacterBuy)
         {
             CharacterSpawn newCharacter = new CharacterSpawn();
             newCharacter.IdCharacter = character.Id;
-            newCharacter.PlayerId = _currentPlayer;
+            newCharacter.PlayerId = _currentPlayer+1;
+            newCharacter.PositionInitial = _pointPlayers[_currentPlayer].position + Vector3Int.down * index;
 
             _totalBuyList.Add(newCharacter);
+
+            index++;
         }
 
+        _listCharacter.Clear();
         _listCharacterBuy.Clear();
 
 
         if(_currentPlayer > 0)
         {
+            Debug.Log("oppay");
             StarGame();
         }else
         {

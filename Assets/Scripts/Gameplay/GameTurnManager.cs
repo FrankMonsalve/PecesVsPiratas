@@ -78,7 +78,7 @@ public class GameTurnManager : MonoBehaviour
     public void StartPlayerTurn()
     {
         List<Character> currentPlayerCharacters = _players[_currentPlayerIndex];
-        UpdatePlayerInturnUI(_currentPlayerIndex);
+        UpdatePlayerInturnUI(_currentPlayerIndex + 1);
 
         foreach (Character character in currentPlayerCharacters)
         {

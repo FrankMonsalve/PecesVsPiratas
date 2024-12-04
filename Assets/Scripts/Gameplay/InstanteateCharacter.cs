@@ -14,6 +14,7 @@ public class InstanteateCharacter : MonoBehaviour
     public void setUpdateList(List<CharacterSpawn> listCharacter)
     {
         listCharacterSpawn = listCharacter;
+        Debug.Log(listCharacterSpawn.Count);
     }
 
     public void Inicializate()

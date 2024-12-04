@@ -576,6 +576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3112881028346341545, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+    - {fileID: -7330002783001737072, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3271954274815661353, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
@@ -634,7 +635,6 @@ MonoBehaviour:
   - {fileID: 1156800842344446109}
   _imgCharacter: {fileID: -1142273219, guid: 6d4e6c3925546b341838bd2b4869a5d0, type: 3}
   _history: El Caballero negro
-  _characterInfo: {fileID: 0}
   _ui: {fileID: 0}
 --- !u!114 &8374637646435388443
 MonoBehaviour:
