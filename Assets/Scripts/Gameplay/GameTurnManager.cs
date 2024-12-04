@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Linq;
+using TMPro;
 
 public enum StateGame
 {
@@ -22,6 +24,9 @@ public class GameTurnManager : MonoBehaviour
     public Tilemap Tilemap => _tilemap;
 
     public PlayerInTurn IndexPlayerUI;
+
+    public Canvas WinScreen;
+    public TMP_Text TextoGanador;
 
 
     private void Awake()
@@ -45,7 +50,7 @@ public class GameTurnManager : MonoBehaviour
             Debug.LogError("Tilemap no asignado en GameTurnManager.");
             return;
         }
-            
+
         StartPlayerTurn();
         _selectedCharacter = null;
     }
@@ -93,13 +98,16 @@ public class GameTurnManager : MonoBehaviour
 
         List<Character> currentPlayerCharacters = _players[_currentPlayerIndex];
 
+        
         foreach (Character character in currentPlayerCharacters)
         {
             if (!CharacterHasMoved(character))
                 return; // Si hay al menos un personaje que no ha terminado, el turno sigue
         }
 
+        
         EndPlayerTurn();
+        
     }
 
     private void EndPlayerTurn()
@@ -125,11 +133,13 @@ public class GameTurnManager : MonoBehaviour
         Debug.Log($"Jugador Seleccionado: {_currentPlayerIndex}");
 
         StartPlayerTurn();
+        CheckGame();
 
     }
 
     private void HandlePlayerInput()
     {
+        
         if (Input.GetMouseButtonDown(0)) // Click izquierdo
         {
 
@@ -217,6 +227,7 @@ public class GameTurnManager : MonoBehaviour
 
             }
 
+            
             CheckTurnEnd(); // Revisa si el turno debe finalizar
         }
     }
@@ -241,5 +252,31 @@ public class GameTurnManager : MonoBehaviour
     public void UpdatePlayerInturnUI(int index)
     {
         IndexPlayerUI.UpdatePlayerInturn(index);
+    }
+
+    public void CheckGame()
+    {
+        int Cantidad = _players[_currentPlayerIndex].Count;
+
+        for(int i = 0; i < _players.Count; i++ )
+        {
+            if (_players[i].Count < 1)
+            {
+                if (i == 0)
+                {
+                    TextoGanador.text = $"VICTRY PLAYER 2";
+                }
+                else
+                {
+                    TextoGanador.text = $"VICTRY PLAYER 1";
+                }
+
+                WinScreen.gameObject.SetActive(true);
+                return;
+            }
+            
+        }
+
+       
     }
 }
