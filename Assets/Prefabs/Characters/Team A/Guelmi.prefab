@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6725563053664691560, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6892744685636993143, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
       propertyPath: m_Color.b
       value: 0.9400835
@@ -105,21 +109,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 640368929685885423, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3073187745343608177}
-    - targetCorrespondingSourceObject: {fileID: 640368929685885423, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8958291955316892764}
-    - targetCorrespondingSourceObject: {fileID: 640368929685885423, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -7460639560406614629}
-    - targetCorrespondingSourceObject: {fileID: 640368929685885423, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -4607493053357721954}
-    - targetCorrespondingSourceObject: {fileID: 640368929685885423, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -921320831726272654}
-    - targetCorrespondingSourceObject: {fileID: 640368929685885423, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 719899485798985910}
   m_SourcePrefab: {fileID: 100100000, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
 --- !u!4 &1101679011383440497 stripped
 Transform:
@@ -144,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nombre: Guelmi
-  _id: 1
+  _id: 2
   _defaultHealth: 110
   _health: 0
   _defaultDamage: 25
@@ -157,6 +146,8 @@ MonoBehaviour:
   - {fileID: 7880992915741110048}
   - {fileID: 4444343876298108189}
   - {fileID: 7236394960820095557}
+  _imgCharacter: {fileID: 1868881714, guid: 0c491658f7dac2c4db24a0b566b01458, type: 3}
+  _history: El caballero azul
   _ui: {fileID: 3692197115575798410}
 --- !u!114 &3073187745343608177
 MonoBehaviour:
@@ -174,149 +165,6 @@ MonoBehaviour:
   _hasMoved: 0
   _remainingMovement: 0
   _initialPosition: {x: 0, y: 0, z: 0}
---- !u!61 &8958291955316892764
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3081216464031183031}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 20
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.875, y: 0.75}
-    newSize: {x: 0.875, y: 0.75}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.875, y: 0.75}
-  m_EdgeRadius: 0
---- !u!114 &-7460639560406614629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3081216464031183031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9714f8f2f2bf3254cac834709758cd39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!50 &-4607493053357721954
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3081216464031183031}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &-921320831726272654
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3081216464031183031}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.875, y: 0.75}
-    newSize: {x: 0.875, y: 0.75}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.875, y: 0.75}
-  m_EdgeRadius: 0
---- !u!114 &719899485798985910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3081216464031183031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b5ae26a793fe6c4dab4a3d9c516af36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forma: 
-  color: 
 --- !u!95 &9184068740220372016 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6725563053664691560, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}

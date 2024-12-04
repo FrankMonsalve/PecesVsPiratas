@@ -3,6 +3,12 @@ using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+public enum StateGame
+{
+    InStore,
+    InGame,
+    GameOver
+}
 public class GameTurnManager : MonoBehaviour
 {
     public static GameTurnManager Instance; // Singleton para acceso global
@@ -14,25 +20,32 @@ public class GameTurnManager : MonoBehaviour
     private int _currentPlayerIndex = 0; // Índice del jugador actual
     private Character _selectedCharacter;
     public Tilemap Tilemap => _tilemap;
-    
+
+    public PlayerInTurn IndexPlayerUI;
+
 
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
-        else{
+        else
+        {
             Destroy(gameObject);
         }
 
         _layerMaskNode = LayerMask.GetMask("LayerNodo");
         _layerMaskCharacter = LayerMask.GetMask("InteractableLayer");
-            
+
     }
 
-    private void Start()
+    public void Initializate()
     {
         if (_tilemap == null)
+        {
             Debug.LogError("Tilemap no asignado en GameTurnManager.");
+            return;
+        }
+            
         StartPlayerTurn();
         _selectedCharacter = null;
     }
@@ -65,6 +78,7 @@ public class GameTurnManager : MonoBehaviour
     public void StartPlayerTurn()
     {
         List<Character> currentPlayerCharacters = _players[_currentPlayerIndex];
+        UpdatePlayerInturnUI(_currentPlayerIndex);
 
         foreach (Character character in currentPlayerCharacters)
         {
@@ -76,6 +90,7 @@ public class GameTurnManager : MonoBehaviour
 
     public void CheckTurnEnd()
     {
+
         List<Character> currentPlayerCharacters = _players[_currentPlayerIndex];
 
         foreach (Character character in currentPlayerCharacters)
@@ -98,11 +113,13 @@ public class GameTurnManager : MonoBehaviour
     private void ChangePlayer()
     {
         Debug.Log("Cambiando de Jugador");
-        if(_currentPlayerIndex >= _players.Count - 1)
+        if (_currentPlayerIndex >= _players.Count - 1)
         {
             _currentPlayerIndex = 0;
-            
-        }else{
+
+        }
+        else
+        {
             _currentPlayerIndex++;
         }
         Debug.Log($"Jugador Seleccionado: {_currentPlayerIndex}");
@@ -120,10 +137,11 @@ public class GameTurnManager : MonoBehaviour
 
             RaycastHit2D hit;
 
-            if(_selectedCharacter == null)
+            if (_selectedCharacter == null)
             {
                 hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero, 1f, _layerMaskCharacter);
-            }else 
+            }
+            else
             {
                 hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero, 1f, _layerMaskNode);
             }
@@ -142,7 +160,7 @@ public class GameTurnManager : MonoBehaviour
 
                     if (CharacterHasMoved(_selectedCharacter))
                     {
-                        
+
                         Debug.Log($"Character {_selectedCharacter.name} no tiene movimientos disponibles");
 
                         _selectedCharacter.OutOfTurn();
@@ -161,7 +179,7 @@ public class GameTurnManager : MonoBehaviour
                     _selectedCharacter = hit.collider.GetComponent<Character>();
                     _selectedCharacter.InTurn();
                     Debug.Log($"The Character has bin changed selected {_selectedCharacter}");
-                    
+
                     if (CharacterHasMoved(_selectedCharacter))
                     {
                         Debug.Log($"Character {_selectedCharacter.name} no tiene movimientos disponibles");
@@ -205,7 +223,7 @@ public class GameTurnManager : MonoBehaviour
 
     public void CheckOutOfTurnCharacter()
     {
-        foreach(Character character in _players[_currentPlayerIndex])
+        foreach (Character character in _players[_currentPlayerIndex])
         {
             character.OutOfTurn();
         }
@@ -218,5 +236,10 @@ public class GameTurnManager : MonoBehaviour
     private bool CharacterHasMoved(Character character)
     {
         return character.Movement.HasMoved;
+    }
+
+    public void UpdatePlayerInturnUI(int index)
+    {
+        IndexPlayerUI.UpdatePlayerInturn(index);
     }
 }

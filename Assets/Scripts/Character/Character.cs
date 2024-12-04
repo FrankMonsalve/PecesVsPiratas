@@ -21,6 +21,11 @@ public class Character : MonoBehaviour
 
     [SerializeField] private List<Node> _node;
 
+    [Header("UI")]
+
+    [SerializeField] Sprite _imgCharacter;
+    [SerializeField] string _history;
+
     [SerializeField] private CharacterUI _ui;
 
     public LayerMask LMask => _layerMask;
@@ -40,6 +45,8 @@ public class Character : MonoBehaviour
     public Animator Animator => _animator;
 
     public List<Node> Node => _node;
+    public Sprite ImgCharacter => _imgCharacter;
+    public string History => _history;
 
     private void Awake() {
         _layerMask = LayerMask.GetMask("InteractableLayer");
@@ -128,16 +135,4 @@ public class Character : MonoBehaviour
         }
     }
 
-    // Método de ataque
-
-    /*
-    public void Attack(Character target)
-    {
-        if (target != null)
-        {
-            target.TakeDamage(attack); // Aplica el daño del atacante al objetivo
-            Debug.Log(gameObject.name + " ataca a " + target.gameObject.name + " y le hace " + attack + " de daño.");
-        }
-    }
-    */
 }
