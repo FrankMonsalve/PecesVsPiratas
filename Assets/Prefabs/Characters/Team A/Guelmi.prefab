@@ -8,9 +8,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1877077477473556921, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 640368929685885423, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
       propertyPath: m_Name
       value: Guelmi
+      objectReference: {fileID: 0}
+    - target: {fileID: 640368929685885423, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3112881028346341545, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+      propertyPath: color
+      value: naranja
+      objectReference: {fileID: 0}
+    - target: {fileID: 3112881028346341545, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+      propertyPath: forma
+      value: Aguila
       objectReference: {fileID: 0}
     - target: {fileID: 3271954274815661353, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,7 +68,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6725563053664691560, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892744685636993143, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9400835
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892744685636993143, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892744685636993143, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -7330002783001737072, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3271954274815661353, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
@@ -77,9 +110,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 640368929685885423, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3073187745343608177}
-    - targetCorrespondingSourceObject: {fileID: 640368929685885423, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8958291955316892764}
   m_SourcePrefab: {fileID: 100100000, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
 --- !u!4 &1101679011383440497 stripped
 Transform:
@@ -104,12 +134,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nombre: Guelmi
-  _id: 1
+  _id: 2
   _defaultHealth: 110
   _health: 0
-  _defaultAttack: 30
-  _attack: 0
-  _maxMovement: 3
+  _defaultDamage: 25
+  _Damage: 0
+  _layerMask: 0
   _animator: {fileID: 9184068740220372016}
   _characterMovement: {fileID: 3073187745343608177}
   _node:
@@ -117,6 +147,9 @@ MonoBehaviour:
   - {fileID: 7880992915741110048}
   - {fileID: 4444343876298108189}
   - {fileID: 7236394960820095557}
+  _imgCharacter: {fileID: 1868881714, guid: 0c491658f7dac2c4db24a0b566b01458, type: 3}
+  _history: El caballero azul
+  _ui: {fileID: 3692197115575798410}
 --- !u!114 &3073187745343608177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,55 +162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1101f216c1f624f934ac6b47f3345d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxMovement: 3
+  _movement: 3
   _hasMoved: 0
   _remainingMovement: 0
   _initialPosition: {x: 0, y: 0, z: 0}
---- !u!61 &8958291955316892764
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3081216464031183031}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 20
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.875, y: 0.75}
-    newSize: {x: 0.875, y: 0.75}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.875, y: 0.75}
-  m_EdgeRadius: 0
 --- !u!95 &9184068740220372016 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6725563053664691560, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
@@ -359,8 +347,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6037649826879395328, guid: 816c3ea351988594199b67c04e88b03d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3692197115575798410}
   m_SourcePrefab: {fileID: 100100000, guid: 816c3ea351988594199b67c04e88b03d, type: 3}
+--- !u!1 &1527677172048502954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6037649826879395328, guid: 816c3ea351988594199b67c04e88b03d, type: 3}
+  m_PrefabInstance: {fileID: 5114238475724715690}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3692197115575798410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527677172048502954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dca7962d7648964082b1a4c433f6ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _head: {fileID: 1551104882570209504}
+--- !u!114 &1551104882570209504 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6016753440276635210, guid: 816c3ea351988594199b67c04e88b03d, type: 3}
+  m_PrefabInstance: {fileID: 5114238475724715690}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3051167840683075841 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7831337746298199979, guid: 816c3ea351988594199b67c04e88b03d, type: 3}

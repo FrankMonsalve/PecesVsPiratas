@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: cfe44cab8cad358439c09a0a327d79c3
   - enabled: 1
-    path: Assets/Scenes/Ana.unity
-    guid: 3deaeb5136d502f468f34d79778490c8
+    path: Assets/Scenes/GamePlay (MovGrid) Ana.unity
+    guid: 1731dffd8e570f94a88a4e553076cced
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: ca0e6f6ad48bdc543a0f05dbd85aa755
   m_configObjects: {}

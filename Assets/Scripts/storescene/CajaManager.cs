@@ -29,7 +29,7 @@ public class CajaManager : MonoBehaviour
     [SerializeField] private Transform characterPosition;
     [SerializeField] private TMP_Text mensajeUI;
 
-    [Header("Menu de Selección de Personaje")]
+    [Header("Menu de Selecciï¿½n de Personaje")]
     public CharacterSelectionMenu characterSelectionMenu;
 
     public GameObject spawnPoint;
@@ -42,7 +42,7 @@ public class CajaManager : MonoBehaviour
         yield return new WaitForSeconds(tiempo);
         if (mensajeUI != null)
         {
-            mensajeUI.gameObject.SetActive(false); // Ocultar el mensaje después del tiempo especificado
+            mensajeUI.gameObject.SetActive(false); // Ocultar el mensaje despuï¿½s del tiempo especificado
         }
     }
 
@@ -70,7 +70,7 @@ public class CajaManager : MonoBehaviour
 
     public void ActivarCajasSegunContador()
     {
-        Debug.Log("Activando cajas según contadores...");
+        Debug.Log("Activando cajas segï¿½n contadores...");
 
         EliminarClonesGenerados();
 
@@ -114,14 +114,14 @@ public class CajaManager : MonoBehaviour
             }
         }
 
-        // Si no todas las cajas activas de arriba están llenas, no desactivar las cajas de abajo.
+        // Si no todas las cajas activas de arriba estï¿½n llenas, no desactivar las cajas de abajo.
         if (!todasLasCajasArribaActivasTienenPrefabs)
         {
-            Debug.Log("No todas las cajas de arriba están llenas, no desactivando las cajas de abajo.");
-            return; // Salir del método sin hacer nada si no están todas llenas.
+            Debug.Log("No todas las cajas de arriba estï¿½n llenas, no desactivando las cajas de abajo.");
+            return; // Salir del mï¿½todo sin hacer nada si no estï¿½n todas llenas.
         }
 
-        // Si todas las cajas activas de arriba están llenas, proceder con la desactivación de las cajas de abajo.
+        // Si todas las cajas activas de arriba estï¿½n llenas, proceder con la desactivaciï¿½n de las cajas de abajo.
         foreach (GameObject caja in cajasAbajo)
         {
             if (caja != null)
@@ -154,12 +154,12 @@ public class CajaManager : MonoBehaviour
             }
         }
 
-        // Si no todas las cajas activas de arriba están llenas, no hacer nada.
+        // Si no todas las cajas activas de arriba estï¿½n llenas, no hacer nada.
         if (!todasLasCajasArribaActivasTienenPrefabs)
         {
-            Debug.Log("Debes seleccionar más jugadores.");
-            MostrarMensajeUI("Debes seleccionar más jugadores."); // Mostrar mensaje en la UI.
-            return; // Salir del método si no hay suficientes prefabs.
+            Debug.Log("Debes seleccionar mï¿½s jugadores.");
+            MostrarMensajeUI("Debes seleccionar mï¿½s jugadores."); // Mostrar mensaje en la UI.
+            return; // Salir del mï¿½todo si no hay suficientes prefabs.
         }
 
         // Proceder a generar clones solo si todas las cajas activas de arriba tienen prefabs.
@@ -193,7 +193,7 @@ public class CajaManager : MonoBehaviour
         // Desactivar los elementos de la UI.
         DesactivarElementosUI();
 
-        // Desactivar el prefab de selección de personaje.
+        // Desactivar el prefab de selecciï¿½n de personaje.
         if (characterSelectionMenu.CharacterPrefabInstance != null)
         {
             characterSelectionMenu.CharacterPrefabInstance.SetActive(false);
@@ -246,7 +246,7 @@ public class CajaManager : MonoBehaviour
             mensajeUI.text = mensaje;
             mensajeUI.gameObject.SetActive(true);
 
-            // Opcional: Ocultar el mensaje después de unos segundos.
+            // Opcional: Ocultar el mensaje despuï¿½s de unos segundos.
             StartCoroutine(EsconderMensajeTrasTiempo(3f));
         }
     }

@@ -3,23 +3,23 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-   [SerializeField] GameObject pauseMenuPanel;
+   public GameObject Menu;
    public void Pause()
    {
-        pauseMenuPanel.SetActive(true);
+        Menu.SetActive(true);
         Time.timeScale = 0;
-   }
-
-   public void Home()
-   {
-        SceneManager.LoadScene("MainMenu");
-        Time.timeScale = 1;
    }
 
    public void Resume()
    {
-     pauseMenuPanel.SetActive(false);
+     Menu.SetActive(false);
      Time.timeScale = 1;
+   }
+
+   public void Home()
+   {
+        SceneManager.LoadSceneAsync(0);
+        //Time.timeScale = 1;
    }
 
    public void Restart()

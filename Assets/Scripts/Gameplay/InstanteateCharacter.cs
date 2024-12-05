@@ -11,7 +11,13 @@ public class InstanteateCharacter : MonoBehaviour
     private List<Character> player1 = new List<Character>();
     private List<Character> player2 = new List<Character>();
 
-    void Awake()
+    public void setUpdateList(List<CharacterSpawn> listCharacter)
+    {
+        listCharacterSpawn = listCharacter;
+        Debug.Log(listCharacterSpawn.Count);
+    }
+
+    public void Inicializate()
     {
         characterList = Instantiate(characterList);
         InitializePlayers();

@@ -35,6 +35,13 @@ public class CharacterSelectionMenu : MonoBehaviour
         }
         currentCharacterInstance = Instantiate(characterPrefabs[index], CharacterPosition.position, Quaternion.identity);
 
+        // Configurar el personaje si tiene un componente Character
+        Character characterComponent = currentCharacterInstance.GetComponent<Character>();
+        if (characterComponent != null)
+        {
+            characterComponent.Setup(); // Inicializa el personaje usando su método Setup
+        }
+
         if (isInMenu) // Solo desactivamos los componentes si es un personaje del menú
         {
             Rigidbody rb = currentCharacterInstance.GetComponent<Rigidbody>();
@@ -62,6 +69,7 @@ public class CharacterSelectionMenu : MonoBehaviour
             }
         }
     }
+
 
     public void NextCharacter()
     {
