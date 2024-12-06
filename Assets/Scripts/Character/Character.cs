@@ -120,7 +120,8 @@ public class Character : MonoBehaviour
     private void Die()
     {
         Debug.Log(gameObject.name + " ha muerto.");
-        
+
+        GameTurnManager.Instance.RemoveCharacter(this);
         Destroy(gameObject); 
     }
 

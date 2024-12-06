@@ -149,7 +149,7 @@ public class ManagerSloct : MonoBehaviour
 
         CanvasOff();
         
-        GameTurnManager.Instance.Initializate();
+        GameTurnManager.Instance.Initialize();
     }
 
     public void Buy()
