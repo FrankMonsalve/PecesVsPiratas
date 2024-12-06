@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public class CharacterUI : MonoBehaviour
 {
-    
-    [SerializeField] Image _head;
+    //Vida UI
+    [SerializeField] Image _health;
 
     public void TakeDamage(float damage)
     {
-        _head.fillAmount = damage;
+        _health.fillAmount = damage;
     }
 }

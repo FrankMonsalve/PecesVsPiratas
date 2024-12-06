@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dca7962d7648964082b1a4c433f6ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _head: {fileID: 1551104882570209504}
+  _health: {fileID: 1551104882570209504}
 --- !u!114 &1551104882570209504 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6016753440276635210, guid: 816c3ea351988594199b67c04e88b03d, type: 3}
