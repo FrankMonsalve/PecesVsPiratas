@@ -158,4 +158,9 @@ public class Node : MonoBehaviour
         _enemy = null;
     }
 
+    public bool IsEnemyPresent()
+    {
+        return _enemy;
+    }
+
 }
