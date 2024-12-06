@@ -63,10 +63,8 @@ public class Node : MonoBehaviour
 
     public void MoveCharacter()
     {
-        Debug.Log("Entra al nodo");
         Vector3Int cellPos = _tilemap.WorldToCell(_Position);
         _character.Movement.MoveToCell(cellPos, _tilemap, _cost);
-        //Debug.Log($"Character {_selectedCharacter.name} Se movio a la casilla {cellPos}");
     }
 
     public void AttackCharacter()

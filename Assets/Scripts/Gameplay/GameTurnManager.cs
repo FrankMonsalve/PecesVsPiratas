@@ -1,10 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
-using UnityEngine.UI;
-using System.Linq;
-using TMPro;
-
 public enum StateGame
 {
     InStore,
@@ -17,16 +13,18 @@ public class GameTurnManager : MonoBehaviour
 
     [SerializeField] private Tilemap _tilemap; // Referencia al Tilemap
     [SerializeField] private List<List<Character>> _players; // Lista de listas de personajes
-    public LayerMask _layerMaskCharacter;
-    public LayerMask _layerMaskNode;
+    private LayerMask _layerMaskCharacter;
+    private LayerMask _layerMaskNode;
     private int _currentPlayerIndex = 0; // Índice del jugador actual
     private Character _selectedCharacter;
     public Tilemap Tilemap => _tilemap;
 
-    public PlayerInTurn IndexPlayerUI;
+    [SerializeField] StateGame _currentStateGame;
 
-    public Canvas WinScreen;
-    public TMP_Text TextoGanador;
+    [Header("UI")]
+    [SerializeField] private GameUIManager _uiManager;
+
+    public StateGame CurrentStateGame => _currentStateGame;
 
 
     private void Awake()
@@ -38,26 +36,42 @@ public class GameTurnManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        _currentStateGame = StateGame.InStore;
+        _uiManager = FindObjectOfType<GameUIManager>();
+
         _layerMaskNode = LayerMask.GetMask("LayerNodo");
         _layerMaskCharacter = LayerMask.GetMask("InteractableLayer");
 
     }
 
-    public void Initializate()
+    public void Initialize()
     {
+
         if (_tilemap == null)
         {
             Debug.LogError("Tilemap no asignado en GameTurnManager.");
             return;
         }
 
+        _currentStateGame = StateGame.InGame;
+        _uiManager.ShowUIInGame();
         StartPlayerTurn();
         _selectedCharacter = null;
     }
 
     private void Update()
     {
-        HandlePlayerInput();
+        if (CurrentStateGame == StateGame.InGame)
+        {
+            HandlePlayerInput();
+        }
+
+        if(Input.GetButtonDown("Jump"))
+        {
+            Debug.Log($"Player 1{_players[0]} - {_players[0].Count}");
+            Debug.Log($"Player 2{_players[1]} - {_players[1].Count}");
+        }
+
     }
 
     public Tilemap GetTilemap()
@@ -98,23 +112,22 @@ public class GameTurnManager : MonoBehaviour
 
         List<Character> currentPlayerCharacters = _players[_currentPlayerIndex];
 
-        
+
         foreach (Character character in currentPlayerCharacters)
         {
             if (!CharacterHasMoved(character))
                 return; // Si hay al menos un personaje que no ha terminado, el turno sigue
         }
 
-        
-        EndPlayerTurn();
-        
-    }
-
-    private void EndPlayerTurn()
-    {
         Debug.Log($"Todos los personajes del Jugador {_currentPlayerIndex + 1} han terminado su turno.");
 
+        EndPlayerTurn();
 
+    }
+
+    public void EndPlayerTurn()
+    {
+        Debug.Log($"el Jugador: {_currentPlayerIndex + 1} ha finalizado su turno");
         ChangePlayer();
     }
 
@@ -133,13 +146,12 @@ public class GameTurnManager : MonoBehaviour
         Debug.Log($"Jugador Seleccionado: {_currentPlayerIndex}");
 
         StartPlayerTurn();
-        CheckGame();
 
     }
 
     private void HandlePlayerInput()
     {
-        
+
         if (Input.GetMouseButtonDown(0)) // Click izquierdo
         {
 
@@ -227,7 +239,7 @@ public class GameTurnManager : MonoBehaviour
 
             }
 
-            
+
             CheckTurnEnd(); // Revisa si el turno debe finalizar
         }
     }
@@ -251,32 +263,37 @@ public class GameTurnManager : MonoBehaviour
 
     public void UpdatePlayerInturnUI(int index)
     {
-        IndexPlayerUI.UpdatePlayerInturn(index);
+        _uiManager.UpdateCurrentPlayer(index);
     }
 
     public void CheckGame()
     {
-        int Cantidad = _players[_currentPlayerIndex].Count;
-
-        for(int i = 0; i < _players.Count; i++ )
+        for (int i = 0; i < _players.Count; i++)
         {
             if (_players[i].Count < 1)
             {
-                if (i == 0)
-                {
-                    TextoGanador.text = $"VICTRY PLAYER 2";
-                }
-                else
-                {
-                    TextoGanador.text = $"VICTRY PLAYER 1";
-                }
+                
+                _uiManager.ShowWinner(i == 0 ? 2 : 1);
 
-                WinScreen.gameObject.SetActive(true);
+                _currentStateGame = StateGame.GameOver;
+                Debug.Log("GANAMOS?");
                 return;
             }
-            
         }
+    }
 
-       
+    public void RemoveCharacter(Character character)
+    {
+        foreach (var player in _players)
+        {
+            if (player.Contains(character))
+            {
+                player.Remove(character);
+                Debug.Log($"Personaje {character.name} eliminado.");
+
+                CheckGame();
+                return;
+            }
+        }
     }
 }
