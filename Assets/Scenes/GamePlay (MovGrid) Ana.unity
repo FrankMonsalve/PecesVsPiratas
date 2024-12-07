@@ -15664,7 +15664,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Selecciona a  los miembros de tu equipo con doble click.
+  m_text: Select your team members with double click.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8aa4fad199ab1d469645f5dd57d9b4d, type: 2}
   m_sharedMaterial: {fileID: 1516393235768923038, guid: f8aa4fad199ab1d469645f5dd57d9b4d, type: 2}
