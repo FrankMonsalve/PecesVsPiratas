@@ -54,10 +54,12 @@ public class InstanteateCharacter : MonoBehaviour
             // Asigna el personaje al jugador correspondiente
             if (item.PlayerId == 1)
             {
+                character.GetComponent<SpriteRenderer>().color= Color.blue;
                 player1.Add(character);
             }
             else if (item.PlayerId == 2)
             {
+                character.GetComponent<SpriteRenderer>().color= Color.red;
                 player2.Add(character);
             }
             else
