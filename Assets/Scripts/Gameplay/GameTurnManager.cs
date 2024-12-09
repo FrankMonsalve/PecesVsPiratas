@@ -26,6 +26,8 @@ public class GameTurnManager : MonoBehaviour
 
     public StateGame CurrentStateGame => _currentStateGame;
 
+    [SerializeField] private Animator _animator;
+
 
     private void Awake()
     {

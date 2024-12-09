@@ -6466,7 +6466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 683315497}
   - component: {fileID: 683315496}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -15710,8 +15710,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -893227699
+  m_SortingLayer: 3
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: d7c90d71d79528e4684f53c0dd27f29c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

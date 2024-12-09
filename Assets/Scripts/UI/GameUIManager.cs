@@ -9,6 +9,7 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private Button _inGame;
     [SerializeField] private TMP_Text _winnerText;
     [SerializeField] private TMP_Text _currentPlayerText;
+    [SerializeField] private Animator _animator;
 
     public void ShowWinner(int winnerPlayerIndex)
     {
@@ -19,6 +20,9 @@ public class GameUIManager : MonoBehaviour
     public void UpdateCurrentPlayer(int playerIndex)
     {
         _currentPlayerText.text = $"Player {playerIndex}";
+        _animator.Play("PlayerTurn");
+        Debug.Log("Ver animacion");
+
     }
 
     public void ShowUIInGame()
