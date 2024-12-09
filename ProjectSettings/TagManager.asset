@@ -10,6 +10,8 @@ TagManager:
   - Objeto
   - BoxUp
   - Obstacle
+  - Personaje
+  - Trigger
   layers:
   - Default
   - TransparentFX

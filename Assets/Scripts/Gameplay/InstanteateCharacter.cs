@@ -45,11 +45,7 @@ public class InstanteateCharacter : MonoBehaviour
 
             // Instancia el personaje en la posición inicial
             Character character = Instantiate(characterPrefab, cellCenter, Quaternion.identity);
-
             character.Setup();
-
-            Debug.Log($"{character.Nombre}\nSalud: {character.Health} | Damage: {character.Damage}");
-            Debug.Log($"Character {character.Nombre} cargado.");
 
             // Asigna el personaje al jugador correspondiente
             if (item.PlayerId == 1)
