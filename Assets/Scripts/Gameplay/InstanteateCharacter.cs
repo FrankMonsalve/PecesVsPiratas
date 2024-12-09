@@ -50,13 +50,13 @@ public class InstanteateCharacter : MonoBehaviour
             // Asigna el personaje al jugador correspondiente
             if (item.PlayerId == 1)
             {
-                character.GetComponent<SpriteRenderer>().color= Color.blue;
+                character.GetComponent<SpriteRenderer>().color= new Color(0.5f, 0.8f, 1f, 1f);
                 character.GetComponent<SpriteRenderer>().flipX = false;
                 player1.Add(character);
             }
             else if (item.PlayerId == 2)
             {
-                character.GetComponent<SpriteRenderer>().color= Color.red;
+                character.GetComponent<SpriteRenderer>().color= new Color(1f, 0.4f, 0.4f, 1f);
                 character.GetComponent<SpriteRenderer>().flipX = true;
                 player2.Add(character);
             }
