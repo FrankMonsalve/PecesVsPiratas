@@ -20,7 +20,7 @@ public class Node : MonoBehaviour
     [SerializeField] string _tagObstacle;
     private Character _enemy;
     private Tilemap _tilemap;
-    public LayerMask  LMask => _layerMask;
+    public LayerMask LMask => _layerMask;
 
     // Start is called before the first frame update
     void Start()
@@ -81,17 +81,19 @@ public class Node : MonoBehaviour
         if (hit.collider == null)
         {
             _spriteRenderer.color = Color.white;
+            Color DefoultColor = _spriteRenderer.color;
+            _spriteRenderer.color = new Vector4(DefoultColor.r, DefoultColor.g, DefoultColor.b, 0.1f);
             _isAvailable = true;
             ResetNode();
             Show();
             return;
         }
 
-        Debug.Log(hit.collider.gameObject.tag +  " gameobject");
+        Debug.Log(hit.collider.gameObject.tag + " gameobject");
         Debug.Log(_tagObstacle);
 
         Debug.Log(hit.collider.gameObject.CompareTag(_tagObstacle));
-        if(hit.collider.gameObject.CompareTag(_tagObstacle))
+        if (hit.collider.gameObject.CompareTag(_tagObstacle))
         {
             _isAvailable = false;
             Hiden();
@@ -102,24 +104,26 @@ public class Node : MonoBehaviour
 
         if (character != null)
         {
-             if (IsAlly(character))
-                {
-                    _spriteRenderer.color = Color.green;
+            if (IsAlly(character))
+            {
+                _spriteRenderer.color = Color.green;
+                Color DefoultColor = _spriteRenderer.color;
+                _spriteRenderer.color = new Vector4(DefoultColor.r, DefoultColor.g, DefoultColor.b, 0.2f);
+                _isAvailable = false;
+                Show();
+                return;
+            }
+            else
+            {
 
-                    _isAvailable = false;
-                    Show();
-                    return;
-                }
-                else
-                {
-
-                    _enemy = character;
-                    _spriteRenderer.color = Color.red;
-
-                    _isAvailable = false;
-                    Show();
-                    return;
-                }
+                _enemy = character;
+                _spriteRenderer.color = Color.red;
+                Color DefoultColor = _spriteRenderer.color;
+                _spriteRenderer.color = new Vector4(DefoultColor.r, DefoultColor.g, DefoultColor.b, 0.2f);
+                _isAvailable = false;
+                Show();
+                return;
+            }
 
         }
     }
@@ -139,6 +143,7 @@ public class Node : MonoBehaviour
         _Position = transform.position;
         _layerMask = LayerMask.GetMask("InteractableLayer");
         CheckNode();
+        Debug.Log("Cambio de color");
     }
 
 

@@ -3052,8 +3052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d251436261228824e8a573be1b366aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VolumeSlider: {fileID: 432684039}
-  yourVolume: 0.5
+  VolumeSlider: {fileID: 0}
 --- !u!81 &396096043
 AudioListener:
   m_ObjectHideFlags: 0

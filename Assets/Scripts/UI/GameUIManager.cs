@@ -18,7 +18,7 @@ public class GameUIManager : MonoBehaviour
 
     public void UpdateCurrentPlayer(int playerIndex)
     {
-        _currentPlayerText.text = $"Player {playerIndex}'s Turn";
+        _currentPlayerText.text = $"Player {playerIndex}";
     }
 
     public void ShowUIInGame()
