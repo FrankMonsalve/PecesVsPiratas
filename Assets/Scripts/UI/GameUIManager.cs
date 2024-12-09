@@ -20,8 +20,9 @@ public class GameUIManager : MonoBehaviour
     public void UpdateCurrentPlayer(int playerIndex)
     {
         _currentPlayerText.text = $"Player {playerIndex}";
-        _animator.Play("PlayerTurn");
+        _animator.SetBool("ChangePlayer", true);
         Debug.Log("Ver animacion");
+        //_animator.SetBool("ChangePlayer", false);
 
     }
 

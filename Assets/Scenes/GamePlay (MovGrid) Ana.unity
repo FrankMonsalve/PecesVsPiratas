@@ -3636,6 +3636,7 @@ MonoBehaviour:
   _inGame: {fileID: 206103944}
   _winnerText: {fileID: 1542964612}
   _currentPlayerText: {fileID: 2008077319}
+  _animator: {fileID: 524140729}
 --- !u!1 &533556677
 GameObject:
   m_ObjectHideFlags: 0
@@ -9736,6 +9737,7 @@ MonoBehaviour:
   _tilemap: {fileID: 996367911}
   _currentStateGame: 0
   _uiManager: {fileID: 524140730}
+  _animator: {fileID: 0}
 --- !u!4 &1112606345
 Transform:
   m_ObjectHideFlags: 0
@@ -19954,7 +19956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 73.062195, y: 348.899}
+  m_AnchoredPosition: {x: 76.8, y: 348.899}
   m_SizeDelta: {x: 721.7, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2008077319
