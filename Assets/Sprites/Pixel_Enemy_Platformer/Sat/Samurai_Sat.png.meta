@@ -132,6 +132,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -645,6 +658,7 @@ TextureImporter:
       Samurai_Sat_20: 913864523
       Samurai_Sat_21: -1347385498
       Samurai_Sat_22: -2084795901
+      Samurai_Sat_23: -735607418
       Samurai_Sat_3: 384319708
       Samurai_Sat_4: -1127676968
       Samurai_Sat_5: -59672357

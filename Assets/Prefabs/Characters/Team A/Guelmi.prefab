@@ -4972,6 +4972,7 @@ MonoBehaviour:
   _health: 0
   _defaultDamage: 25
   _Damage: 0
+  _movement: 3
   _layerMask: 0
   _animator: {fileID: 9184068740220372016}
   _characterMovement: {fileID: 3073187745343608177}
@@ -4995,10 +4996,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1101f216c1f624f934ac6b47f3345d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movement: 3
   _hasMoved: 0
   _remainingMovement: 0
   _initialPosition: {x: 0, y: 0, z: 0}
+  _duration: 0.68
 --- !u!95 &9184068740220372016 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6725563053664691560, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}

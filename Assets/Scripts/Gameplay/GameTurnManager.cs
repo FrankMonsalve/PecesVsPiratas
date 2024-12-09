@@ -66,7 +66,7 @@ public class GameTurnManager : MonoBehaviour
             HandlePlayerInput();
         }
 
-        if(Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             Debug.Log($"Player 1{_players[0]} - {_players[0].Count}");
             Debug.Log($"Player 2{_players[1]} - {_players[1].Count}");
@@ -185,8 +185,7 @@ public class GameTurnManager : MonoBehaviour
 
                         Debug.Log($"Character {_selectedCharacter.name} no tiene movimientos disponibles");
 
-                        _selectedCharacter.OutOfTurn();
-                        _selectedCharacter = null;
+                        DeselectCharacter();
                         return;
                     }
 
@@ -205,8 +204,7 @@ public class GameTurnManager : MonoBehaviour
                     if (CharacterHasMoved(_selectedCharacter))
                     {
                         Debug.Log($"Character {_selectedCharacter.name} no tiene movimientos disponibles");
-                        _selectedCharacter.OutOfTurn();
-                        _selectedCharacter = null;
+                        DeselectCharacter();
                         return;
                     }
                 }
@@ -220,7 +218,7 @@ public class GameTurnManager : MonoBehaviour
                     Debug.Log("1");
 
                     CheckOutOfTurnCharacter();
-                    _selectedCharacter = null;
+                    DeselectCharacter();
                     return;
                 }
 
@@ -234,13 +232,22 @@ public class GameTurnManager : MonoBehaviour
                 //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 //_selectedCharacter.Movement.MoveToCell(cellPos, _tilemap);
                 //Debug.Log($"Character {_selectedCharacter.name} Se movio a la casilla {cellPos}");
-                _selectedCharacter.OutOfTurn();
-                _selectedCharacter = null;
+                DeselectCharacter();
 
             }
 
 
             CheckTurnEnd(); // Revisa si el turno debe finalizar
+        }
+    }
+
+    public void DeselectCharacter()
+    {
+        if (_selectedCharacter != null)
+        {
+            Debug.Log($"Character: {_selectedCharacter.name}  deselected");
+            _selectedCharacter.OutOfTurn();
+            _selectedCharacter = null;
         }
     }
 
@@ -272,7 +279,7 @@ public class GameTurnManager : MonoBehaviour
         {
             if (_players[i].Count < 1)
             {
-                
+
                 _uiManager.ShowWinner(i == 0 ? 2 : 1);
 
                 _currentStateGame = StateGame.GameOver;
