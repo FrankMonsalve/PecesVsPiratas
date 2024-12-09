@@ -21,6 +21,7 @@ public class Node : MonoBehaviour
     private Character _enemy;
     private Tilemap _tilemap;
     public LayerMask LMask => _layerMask;
+    public SpriteRenderer SpriteRenderer => _spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -29,17 +30,13 @@ public class Node : MonoBehaviour
         _tilemap = GameTurnManager.Instance.Tilemap;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     //public Vector3Int Position() => transform.position;
 
     public void Action()
     {
         Debug.Log($"Action | Node: {_isAvailable}");
+
+        DirectionAdjustment();
 
         if (_enemy != null)
         {
@@ -64,14 +61,11 @@ public class Node : MonoBehaviour
     public void MoveCharacter()
     {
         Vector3Int cellPos = _tilemap.WorldToCell(_Position);
+
+        DirectionAdjustment();
+        
         _character.Movement.MoveToCell(cellPos, _tilemap, _cost);
     }
-
-    public void AttackCharacter()
-    {
-
-    }
-
     public void CheckNode()
     {
         RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.zero, 1f, LMask);
@@ -146,7 +140,6 @@ public class Node : MonoBehaviour
         Debug.Log("Cambio de color");
     }
 
-
     public void Hiden()
     {
         //_spriteRenderer.enabled = false;
@@ -154,7 +147,7 @@ public class Node : MonoBehaviour
     }
     public void Show()
     {
-        // _spriteRenderer.enabled = true;
+        //_spriteRenderer.enabled = true;
         gameObject.SetActive(true);
     }
 
@@ -168,4 +161,16 @@ public class Node : MonoBehaviour
         return _enemy;
     }
 
+    public void DirectionAdjustment()
+    {
+         Vector3 direction = (_Position - _character.transform.position).normalized;
+        if (direction.x < 0)
+        {
+            _character.SpriteRenderer.flipX = true; // Mirar a la izquierda
+        }
+        else if (direction.x > 0)
+        {
+            _character.SpriteRenderer.flipX = false; // Mirar a la derecha
+        }
+    }
 }

@@ -29,6 +29,15 @@ public class Character : MonoBehaviour
 
     [SerializeField] private CharacterUI _ui;
 
+    [Header("VFX")]
+    [SerializeField] private ParticleSystem _dust;
+
+    private Character _target;
+    private SpriteRenderer _spriteRenderer;
+    public SpriteRenderer SpriteRenderer => _spriteRenderer;
+
+    public ParticleSystem ParticleDust => _dust;
+
     public LayerMask LMask => _layerMask;
 
     public string Nombre => _nombre;
@@ -48,6 +57,7 @@ public class Character : MonoBehaviour
     public List<Node> Node => _node;
     public Sprite ImgCharacter => _imgCharacter;
     public string History => _history;
+    public int RemainingMovement => _movement;
 
     private void Awake() {
         _layerMask = LayerMask.GetMask("InteractableLayer");
@@ -60,6 +70,8 @@ public class Character : MonoBehaviour
 
         _health = _maxHealth;
         _Damage = _maxDamage;
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         IsAlive = true;
         OutOfTurn();
@@ -74,7 +86,9 @@ public class Character : MonoBehaviour
         _Damage = _maxDamage;
         IsAlive = true;
 
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _characterMovement.Setup(_movement);
+        UpdateMovementUI();
         OutOfTurn();
     }
 
@@ -83,6 +97,8 @@ public class Character : MonoBehaviour
     {
 
         _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
+
+        _animator.Play("Damage");
 
         float currenthealth = (float)_health/_maxHealth;
         Debug.Log(currenthealth);
@@ -131,11 +147,35 @@ public class Character : MonoBehaviour
     {
         if(_characterMovement.RemainingMovement > 0)
         {
+            _target = character;
             Debug.Log($"{Nombre} ataca a {character.Nombre}");
-            _characterMovement.Attack();
 
-            character.TakeDamage(Damage);
+            Animator.Play("Attack");
+            _characterMovement.Attack();
         }
+    }
+
+    public void ApplyDamage()
+    {
+        if (_target != null)
+        {
+            Vector3Int cellPos = GameTurnManager.Instance.Tilemap.WorldToCell(_target.transform.position);
+
+            _target.TakeDamage(Damage);
+            
+            Debug.Log($"{gameObject.name} está infligiendo daño a {_target.name}");
+
+            if(!_target.IsAlive || _target == null)
+            {
+                Movement.MoveToCell(cellPos, GameTurnManager.Instance.Tilemap, 0);
+            }
+            _target = null;
+        }
+    }
+
+    public void UpdateMovementUI()
+    {
+        _ui.UpdateMovement(_characterMovement.RemainingMovement);
     }
 
 }

@@ -55,11 +55,13 @@ public class InstanteateCharacter : MonoBehaviour
             if (item.PlayerId == 1)
             {
                 character.GetComponent<SpriteRenderer>().color= Color.blue;
+                character.GetComponent<SpriteRenderer>().flipX = false;
                 player1.Add(character);
             }
             else if (item.PlayerId == 2)
             {
                 character.GetComponent<SpriteRenderer>().color= Color.red;
+                character.GetComponent<SpriteRenderer>().flipX = true;
                 player2.Add(character);
             }
             else

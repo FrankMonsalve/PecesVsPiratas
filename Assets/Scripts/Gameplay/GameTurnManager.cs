@@ -102,6 +102,7 @@ public class GameTurnManager : MonoBehaviour
         foreach (Character character in currentPlayerCharacters)
         {
             character.Movement.ResetMovement();
+            character.UpdateMovementUI();
         }
 
         Debug.Log($"Es el turno del Jugador {_currentPlayerIndex + 1}. ¡Mueve tus personajes!");

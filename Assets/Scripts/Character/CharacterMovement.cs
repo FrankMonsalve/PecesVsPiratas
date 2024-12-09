@@ -43,13 +43,13 @@ public class CharacterMovement : MonoBehaviour
             return;
         }
 
-
         Vector3 targetPosition = tilemap.GetCellCenterWorld(cellPosition);
 
         // Activar animación de caminar
         //_character.Animator.SetBool("IsWalking", true);
 
         _character.Animator.Play("Walk");
+        _character.ParticleDust.Play();
         StartCoroutine(MoveWithAnimation(targetPosition, _duration));
 
 
@@ -79,6 +79,7 @@ public class CharacterMovement : MonoBehaviour
     public void Attack(int cost)
     {
         _remainingMovement = Mathf.Clamp(_remainingMovement - cost, 0, Movement);
+
         checkMovement();
     }
 
@@ -91,6 +92,8 @@ public class CharacterMovement : MonoBehaviour
 
     public void checkMovement()
     {
+        _character.UpdateMovementUI();
+
         if (_remainingMovement > 0)
         {
             _hasMoved = false;
@@ -102,6 +105,25 @@ public class CharacterMovement : MonoBehaviour
     }
 
     public IEnumerator MoveWithAnimation(Vector3 targetPosition, float duration)
+    {
+        Vector3 startPosition = transform.position;
+        float elapsedTime = 0f;
+
+        //yield return new WaitForSeconds(_delay); // Pequeño retraso antes de mover.
+        while (elapsedTime < duration)
+        {
+            transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        //Desactivar animación de caminar.
+        _character.Animator.Play("Idle");
+
+        transform.position = targetPosition;
+    }
+
+    public IEnumerator AttackAnimation(Vector3 targetPosition, float duration)
     {
         Vector3 startPosition = transform.position;
         float elapsedTime = 0f;
