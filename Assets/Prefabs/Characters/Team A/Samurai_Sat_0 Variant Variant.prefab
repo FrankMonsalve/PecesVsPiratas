@@ -36,6 +36,10 @@ PrefabInstance:
       propertyPath: m_SpriteSortPoint
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3781450340111946296, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 290c1c70ddb50774d8eb878f020104fb, type: 2}
     - target: {fileID: 5892587973081739230, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
       propertyPath: m_Name
       value: Samurai_Sat_0 Variant Variant
