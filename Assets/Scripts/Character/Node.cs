@@ -23,6 +23,9 @@ public class Node : MonoBehaviour
     public LayerMask LMask => _layerMask;
     public SpriteRenderer SpriteRenderer => _spriteRenderer;
 
+    [Header("Effects")]
+    public ParticleSystem particlePrefab; // Prefab del sistema de partículas 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +44,8 @@ public class Node : MonoBehaviour
         if (_enemy != null)
         {
             Debug.Log($"Attack");
+
+            //EffectAttack();
             _character.Attack(_enemy);
 
             if (!_enemy.IsAlive)
@@ -172,5 +177,11 @@ public class Node : MonoBehaviour
         {
             _character.SpriteRenderer.flipX = false; // Mirar a la derecha
         }
+    }
+
+    public void EffectAttack()
+    {
+        ParticleSystem particleInstance = Instantiate(particlePrefab, transform.position, Quaternion.identity);
+        particleInstance.GetComponent<ParticleSystemRenderer>().sortingOrder = 10; 
     }
 }

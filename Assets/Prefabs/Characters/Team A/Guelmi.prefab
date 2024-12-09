@@ -73,6 +73,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 0d8087a346a09f4469fa062edfa30613, type: 2}
     - target: {fileID: 6892744685636993143, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892744685636993143, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
@@ -92,6 +96,14 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -1994249823
       objectReference: {fileID: 0}
+    - target: {fileID: 6892744685636993143, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892744685636993143, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 290c1c70ddb50774d8eb878f020104fb, type: 2}
     m_RemovedComponents:
     - {fileID: -7330002783001737072, guid: 4928b8e1445fa8d48aa2ca8210b7cd44, type: 3}
     m_RemovedGameObjects: []

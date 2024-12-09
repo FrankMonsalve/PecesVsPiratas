@@ -107,6 +107,7 @@ MonoBehaviour:
     m_Bits: 0
   _spriteRenderer: {fileID: 426681601730814027}
   _tagObstacle: Obstacle
+  particlePrefab: {fileID: 1425061744818032904, guid: fc8a166072235ee48a4618ffe07132bc, type: 3}
 --- !u!61 &3757040365164446419
 BoxCollider2D:
   m_ObjectHideFlags: 0

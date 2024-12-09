@@ -578,6 +578,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -1994249823
       objectReference: {fileID: 0}
+    - target: {fileID: 2655150080966839822, guid: 98a60366242a99044baf735a8f231797, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 290c1c70ddb50774d8eb878f020104fb, type: 2}
     - target: {fileID: 4473487736486863640, guid: 98a60366242a99044baf735a8f231797, type: 3}
       propertyPath: m_Name
       value: Wizzart_C_Sat_0 Variant 1
