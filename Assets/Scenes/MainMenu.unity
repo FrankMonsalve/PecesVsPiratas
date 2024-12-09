@@ -3764,7 +3764,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 960, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -4588,7 +4588,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1706816662}
   - {fileID: 1929686454}
   m_Father: {fileID: 340192732}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6486,7 +6485,7 @@ Camera:
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
-  m_FOVAxisMode: 0
+  m_FOVAxisMode: 1
   m_Iso: 200
   m_ShutterSpeed: 0.005
   m_Aperture: 16
@@ -15733,11 +15732,11 @@ Transform:
   m_GameObject: {fileID: 1706816660}
   serializedVersion: 2
   m_LocalRotation: {x: -0.13352273, y: -0, z: -0, w: 0.9910458}
-  m_LocalPosition: {x: -480.47, y: -297.01, z: -0.66}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalPosition: {x: -0.51, y: 3.6, z: 0}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 399683234}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -15.346, y: 0, z: 0}
 --- !u!1 &1708434935
 GameObject:
@@ -18338,6 +18337,7 @@ SceneRoots:
   - {fileID: 263347631}
   - {fileID: 1040058658}
   - {fileID: 961969607}
+  - {fileID: 1706816662}
   - {fileID: 340192732}
   - {fileID: 548937781}
   - {fileID: 396096039}
