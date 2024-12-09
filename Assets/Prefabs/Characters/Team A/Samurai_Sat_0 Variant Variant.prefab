@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3781450340111946296, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5892587973081739230, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
       propertyPath: m_Name
       value: Samurai_Sat_0 Variant Variant
@@ -235,7 +239,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 0.71875, y: 0.8125}
     newSize: {x: 0.71875, y: 0.8125}
     adaptiveTilingThreshold: 0.5
