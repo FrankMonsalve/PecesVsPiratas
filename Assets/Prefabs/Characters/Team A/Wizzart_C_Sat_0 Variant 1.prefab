@@ -81,6 +81,73 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7510225557432334370, guid: f0cd0e53f9ea4404d8cb6b1baf2a980c, type: 3}
   m_PrefabInstance: {fileID: 465376490358166256}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1456521629990222650
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 279043692602087045}
+    m_Modifications:
+    - target: {fileID: 5503561859308992920, guid: bc769841dd91054488a73e8e5bd92537, type: 3}
+      propertyPath: m_Name
+      value: Particles Walk
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989065776740342158, guid: bc769841dd91054488a73e8e5bd92537, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.193
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989065776740342158, guid: bc769841dd91054488a73e8e5bd92537, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.287
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989065776740342158, guid: bc769841dd91054488a73e8e5bd92537, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989065776740342158, guid: bc769841dd91054488a73e8e5bd92537, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989065776740342158, guid: bc769841dd91054488a73e8e5bd92537, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989065776740342158, guid: bc769841dd91054488a73e8e5bd92537, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989065776740342158, guid: bc769841dd91054488a73e8e5bd92537, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989065776740342158, guid: bc769841dd91054488a73e8e5bd92537, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989065776740342158, guid: bc769841dd91054488a73e8e5bd92537, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989065776740342158, guid: bc769841dd91054488a73e8e5bd92537, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc769841dd91054488a73e8e5bd92537, type: 3}
+--- !u!198 &4390220473775598288 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2944132556640473578, guid: bc769841dd91054488a73e8e5bd92537, type: 3}
+  m_PrefabInstance: {fileID: 1456521629990222650}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8415183710589018804 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6989065776740342158, guid: bc769841dd91054488a73e8e5bd92537, type: 3}
+  m_PrefabInstance: {fileID: 1456521629990222650}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2042945625848446139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -432,7 +499,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 933588042859808207, guid: 816c3ea351988594199b67c04e88b03d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -440,6 +508,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5475681016200300537}
   m_SourcePrefab: {fileID: 100100000, guid: 816c3ea351988594199b67c04e88b03d, type: 3}
+--- !u!114 &3437051905056461797 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1462256869905869877, guid: 816c3ea351988594199b67c04e88b03d, type: 3}
+  m_PrefabInstance: {fileID: 4321246308521574352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6293400800959078523 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7831337746298199979, guid: 816c3ea351988594199b67c04e88b03d, type: 3}
@@ -463,6 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 7532248383636447642}
+  _Movement: {fileID: 3437051905056461797}
 --- !u!114 &7532248383636447642 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6016753440276635210, guid: 816c3ea351988594199b67c04e88b03d, type: 3}
@@ -489,6 +569,14 @@ PrefabInstance:
     - target: {fileID: -3048585064031279855, guid: 98a60366242a99044baf735a8f231797, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2655150080966839822, guid: 98a60366242a99044baf735a8f231797, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2655150080966839822, guid: 98a60366242a99044baf735a8f231797, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1994249823
       objectReference: {fileID: 0}
     - target: {fileID: 4473487736486863640, guid: 98a60366242a99044baf735a8f231797, type: 3}
       propertyPath: m_Name
@@ -568,6 +656,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5446025399826967016, guid: 98a60366242a99044baf735a8f231797, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1653379605344238366}
+    - targetCorrespondingSourceObject: {fileID: 5446025399826967016, guid: 98a60366242a99044baf735a8f231797, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8415183710589018804}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4473487736486863640, guid: 98a60366242a99044baf735a8f231797, type: 3}
       insertIndex: -1
@@ -642,6 +733,7 @@ MonoBehaviour:
     razas, se podr\xE1 restaurar el Coraz\xF3n de Verden y traer una nueva era de
     paz y armon\xEDa. "
   _ui: {fileID: 5475681016200300537}
+  _dust: {fileID: 4390220473775598288}
 --- !u!114 &8509417603346849095
 MonoBehaviour:
   m_ObjectHideFlags: 0

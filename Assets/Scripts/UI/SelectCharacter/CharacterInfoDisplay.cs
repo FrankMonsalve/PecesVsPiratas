@@ -21,7 +21,7 @@ public class CharacterInfoDisplay : MonoBehaviour
         //_history.text = character.History;
         _health.text = "Health: " + character.DefaultHealth;
         _attack.text = "Attack: " + character.DefaulAttack;
-        _movement.text = "Movements: " + character.Movement.Movement;
+        _movement.text = "Movements: " + character.RemainingMovement;
     }
     
 }

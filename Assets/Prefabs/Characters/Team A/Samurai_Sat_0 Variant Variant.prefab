@@ -25,6 +25,14 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3781450340111946296, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781450340111946296, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1994249823
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781450340111946296, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
       propertyPath: m_SpriteSortPoint
       value: 0
       objectReference: {fileID: 0}
@@ -85,6 +93,7 @@ PrefabInstance:
     - {fileID: -7005365292843705263, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
     - {fileID: -9079323174807489457, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
     - {fileID: 6311040149684702318, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
+    - {fileID: 5904433136662881964, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8116448279507560917, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
@@ -131,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 2489037859719451401}
+  _Movement: {fileID: 7331826378893091190}
 --- !u!114 &2489037859719451401 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1043650558468848937, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
@@ -147,11 +157,27 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 31215793081488186, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
   m_PrefabInstance: {fileID: 3238400503746391584}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &5543299672513954992 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6925654105130281616, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
+  m_PrefabInstance: {fileID: 3238400503746391584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6652510083569616885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8116448279507560917, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
   m_PrefabInstance: {fileID: 3238400503746391584}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7331826378893091190 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5282437758088712022, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
+  m_PrefabInstance: {fileID: 3238400503746391584}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9022875624409743870 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5892587973081739230, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
@@ -187,6 +213,7 @@ MonoBehaviour:
   _imgCharacter: {fileID: 135195816, guid: 43dd7091ca5111d43bf62acc241d07f6, type: 3}
   _history: 
   _ui: {fileID: 140664485380466910}
+  _dust: {fileID: 5543299672513954992}
 --- !u!114 &2713315575511312164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +266,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.71875, y: 0.8125}
     newSize: {x: 0.71875, y: 0.8125}
     adaptiveTilingThreshold: 0.5
