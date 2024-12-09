@@ -138,6 +138,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &3215564088780193050 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 31215793081488186, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
+  m_PrefabInstance: {fileID: 3238400503746391584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6652510083569616885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8116448279507560917, guid: d0fb575f0673cc247a6f3ab0c2682146, type: 3}
@@ -166,8 +171,9 @@ MonoBehaviour:
   _health: 0
   _defaultDamage: 90
   _Damage: 0
+  _movement: 3
   _layerMask: 6
-  _animator: {fileID: 0}
+  _animator: {fileID: 3215564088780193050}
   _characterMovement: {fileID: 2713315575511312164}
   _node:
   - {fileID: 2903149984066538279}
@@ -189,10 +195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1101f216c1f624f934ac6b47f3345d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movement: 4
   _hasMoved: 0
   _remainingMovement: 0
   _initialPosition: {x: 0, y: 0, z: 0}
+  _duration: 0.8
+  _delay: 0.2
 --- !u!61 &1544272672395798772
 BoxCollider2D:
   m_ObjectHideFlags: 0

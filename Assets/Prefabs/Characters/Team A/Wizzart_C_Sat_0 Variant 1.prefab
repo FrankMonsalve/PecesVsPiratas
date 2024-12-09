@@ -604,6 +604,7 @@ MonoBehaviour:
   _health: 0
   _defaultDamage: 80
   _Damage: 0
+  _movement: 4
   _layerMask: 6
   _animator: {fileID: 0}
   _characterMovement: {fileID: 8509417603346849095}
@@ -648,10 +649,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1101f216c1f624f934ac6b47f3345d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movement: 5
   _hasMoved: 0
   _remainingMovement: 0
   _initialPosition: {x: 0, y: 0, z: 0}
+  _duration: 0.8
 --- !u!1001 &5243274363311533846
 PrefabInstance:
   m_ObjectHideFlags: 0

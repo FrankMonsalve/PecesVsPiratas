@@ -12,6 +12,7 @@ public class Character : MonoBehaviour
     [SerializeField] private int _defaultDamage;
     private int _maxDamage;
     [SerializeField] private int _Damage;
+    [SerializeField] private int _movement;
 
     [SerializeField] int _layerMask;
     
@@ -73,6 +74,7 @@ public class Character : MonoBehaviour
         _Damage = _maxDamage;
         IsAlive = true;
 
+        _characterMovement.Setup(_movement);
         OutOfTurn();
     }
 

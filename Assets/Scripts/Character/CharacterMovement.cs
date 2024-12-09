@@ -1,12 +1,18 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] private int _movement = 3;
+    private int _movement;
     [SerializeField] private bool _hasMoved;
     [SerializeField] private int _remainingMovement;
     [SerializeField] private Vector3 _initialPosition;
+
+    [SerializeField] private float _duration = 0.8f;
+    [SerializeField] private float _delay = 0.2f;
+
+    private Character _character;
 
     public bool HasMoved => _hasMoved;
     public int Movement => _movement;
@@ -17,7 +23,7 @@ public class CharacterMovement : MonoBehaviour
         _remainingMovement -= value;
     }
 
-    public void MoveToCell(Vector3Int targetCell, Tilemap tilemap, int cost)
+    public void MoveToCell(Vector3Int cellPosition, Tilemap tilemap, int cost)
     {
 
         Debug.Log(tilemap + " MoveToCell");
@@ -38,17 +44,22 @@ public class CharacterMovement : MonoBehaviour
         }
 
 
-        Vector3 cellCenter = tilemap.GetCellCenterWorld(targetCell);
-        transform.position = cellCenter;
+        Vector3 targetPosition = tilemap.GetCellCenterWorld(cellPosition);
+
+        // Activar animación de caminar
+        //_character.Animator.SetBool("IsWalking", true);
+
+        _character.Animator.Play("Walk");
+        StartCoroutine(MoveWithAnimation(targetPosition, _duration));
 
 
         _remainingMovement -= cost;
-
         checkMovement();
     }
 
     public void Setup(int maxMovement)
     {
+        _character = gameObject.GetComponent<Character>();
         _movement = maxMovement;
         _remainingMovement = _movement;
         _hasMoved = false;
@@ -87,7 +98,26 @@ public class CharacterMovement : MonoBehaviour
         }
 
         _hasMoved = true;
-        Debug.Log($"{gameObject.name} ha terminado suS movimiento.");
+        Debug.Log($"{gameObject.name} ha terminado sus movimiento.");
+    }
+
+    public IEnumerator MoveWithAnimation(Vector3 targetPosition, float duration)
+    {
+        Vector3 startPosition = transform.position;
+        float elapsedTime = 0f;
+
+        //yield return new WaitForSeconds(_delay); // Pequeño retraso antes de mover.
+        while (elapsedTime < duration)
+        {
+            transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        //Desactivar animación de caminar.
+        _character.Animator.Play("Idle");
+
+        transform.position = targetPosition;
     }
 }
 
