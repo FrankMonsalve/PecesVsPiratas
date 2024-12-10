@@ -175,6 +175,7 @@ MonoBehaviour:
   _history: El caballero azul
   _ui: {fileID: 3692197115575798410}
   _dust: {fileID: 8851400716005086537}
+  _particlePrefab: {fileID: 1425061744818032904, guid: fc8a166072235ee48a4618ffe07132bc, type: 3}
 --- !u!114 &3073187745343608177
 MonoBehaviour:
   m_ObjectHideFlags: 0

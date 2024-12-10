@@ -31,6 +31,7 @@ public class Character : MonoBehaviour
 
     [Header("VFX")]
     [SerializeField] private ParticleSystem _dust;
+    [SerializeField] ParticleSystem _particlePrefab;
 
     private Character _target;
     private SpriteRenderer _spriteRenderer;
@@ -99,6 +100,8 @@ public class Character : MonoBehaviour
         _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
 
         _animator.Play("Damage");
+
+        EffectAttack();
 
         float currenthealth = (float)_health/_maxHealth;
         Debug.Log(currenthealth);
@@ -176,6 +179,12 @@ public class Character : MonoBehaviour
     public void UpdateMovementUI()
     {
         _ui.UpdateMovement(_characterMovement.RemainingMovement);
+    }
+
+    public void EffectAttack()
+    {
+        ParticleSystem particleInstance = Instantiate(_particlePrefab, transform.position, Quaternion.identity);
+        particleInstance.GetComponent<ParticleSystemRenderer>().sortingOrder = 10; 
     }
 
 }

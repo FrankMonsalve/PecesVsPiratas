@@ -5162,6 +5162,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light
       objectReference: {fileID: 0}
+    - target: {fileID: 7446937968912434225, guid: 485952cc4fe1d9643a20d841dfd76816, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9117102075258456120, guid: 485952cc4fe1d9643a20d841dfd76816, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
