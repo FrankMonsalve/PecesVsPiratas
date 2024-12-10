@@ -13,39 +13,28 @@ public class Character : MonoBehaviour
     private int _maxDamage;
     [SerializeField] private int _Damage;
     [SerializeField] private int _movement;
-
     [SerializeField] int _layerMask;
-    
     [SerializeField] private Animator _animator;
-
     [SerializeField] private CharacterMovement _characterMovement;
-
     [SerializeField] private List<Node> _node;
 
     [Header("UI")]
-
     [SerializeField] Sprite _imgCharacter;
     [SerializeField] string _history;
-
     [SerializeField] private CharacterUI _ui;
 
     [Header("VFX")]
     [SerializeField] private ParticleSystem _dust;
     [SerializeField] ParticleSystem _particlePrefab;
-
     private Character _target;
     private SpriteRenderer _spriteRenderer;
     public SpriteRenderer SpriteRenderer => _spriteRenderer;
-
     public ParticleSystem ParticleDust => _dust;
-
     public LayerMask LMask => _layerMask;
-
     public string Nombre => _nombre;
     public int Id => _id;
     public int DefaultHealth => _defaultHealth;
     public int DefaulAttack => _defaultDamage;
-
     public int Health => _health;
     public int Damage => _Damage;
 
@@ -115,7 +104,6 @@ public class Character : MonoBehaviour
 
         }
     }
-
     public void IncreaseHealth(int value)
     {
         _health = Mathf.Clamp(_health + value, 0, _maxHealth);
@@ -175,7 +163,7 @@ public class Character : MonoBehaviour
             _target = null;
         }
     }
-
+    
     public void UpdateMovementUI()
     {
         _ui.UpdateMovement(_characterMovement.RemainingMovement);
