@@ -16,6 +16,7 @@ public class CharacterInfoDisplay : MonoBehaviour
 
     public void UpdateInfoCharacterDisplay(Character character)
     {
+        _imgCharacter.color = new Color(255,255, 255, 255); 
         _imgCharacter.sprite = character.ImgCharacter;
         _name.text = character.Nombre;
         //_history.text = character.History;
