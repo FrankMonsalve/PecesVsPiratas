@@ -158,9 +158,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nombre: Guelmi
   _id: 2
-  _defaultHealth: 110
+  _defaultHealth: 220
   _health: 0
-  _defaultDamage: 25
+  _defaultDamage: 30
   _Damage: 0
   _movement: 3
   _layerMask: 0
