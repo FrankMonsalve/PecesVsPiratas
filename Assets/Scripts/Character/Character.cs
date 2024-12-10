@@ -26,8 +26,12 @@ public class Character : MonoBehaviour
     [Header("VFX")]
     [SerializeField] private ParticleSystem _dust;
     [SerializeField] ParticleSystem _particlePrefab;
+
+    [Header("SFX")]
+    [SerializeField] AudioClip _audioHit;
     private Character _target;
     private SpriteRenderer _spriteRenderer;
+    private AudioSource _audioSource;
     public SpriteRenderer SpriteRenderer => _spriteRenderer;
     public ParticleSystem ParticleDust => _dust;
     public LayerMask LMask => _layerMask;
@@ -49,12 +53,15 @@ public class Character : MonoBehaviour
     public string History => _history;
     public int RemainingMovement => _movement;
 
-    private void Awake() {
+
+    private void Awake()
+    {
         _layerMask = LayerMask.GetMask("InteractableLayer");
     }
 
     public void Setup(int addHealth, int addAttack)
     {
+
         _maxHealth = addHealth + _defaultHealth;
         _maxDamage = addAttack + _defaultDamage;
 
@@ -69,6 +76,8 @@ public class Character : MonoBehaviour
 
     public void Setup()
     {
+
+        _audioSource = GameObject.FindWithTag("Audio").GetComponent<AudioSource>();
         _maxHealth = _defaultHealth;
         _maxDamage = _defaultDamage;
 
@@ -92,7 +101,7 @@ public class Character : MonoBehaviour
 
         EffectAttack();
 
-        float currenthealth = (float)_health/_maxHealth;
+        float currenthealth = (float)_health / _maxHealth;
         Debug.Log(currenthealth);
         _ui.TakeDamage(currenthealth);
 
@@ -131,12 +140,12 @@ public class Character : MonoBehaviour
         Debug.Log(gameObject.name + " ha muerto.");
 
         GameTurnManager.Instance.RemoveCharacter(this);
-        Destroy(gameObject); 
+        Destroy(gameObject);
     }
 
     public void Attack(Character character)
     {
-        if(_characterMovement.RemainingMovement > 0)
+        if (_characterMovement.RemainingMovement > 0)
         {
             _target = character;
             Debug.Log($"{Nombre} ataca a {character.Nombre}");
@@ -150,20 +159,22 @@ public class Character : MonoBehaviour
     {
         if (_target != null)
         {
+            Debug.Log(_audioSource);
+            _audioSource.PlayOneShot(_audioHit);
             Vector3Int cellPos = GameTurnManager.Instance.Tilemap.WorldToCell(_target.transform.position);
 
             _target.TakeDamage(Damage);
-            
+
             Debug.Log($"{gameObject.name} está infligiendo daño a {_target.name}");
 
-            if(!_target.IsAlive || _target == null)
+            if (!_target.IsAlive || _target == null)
             {
                 Movement.MoveToCell(cellPos, GameTurnManager.Instance.Tilemap, 0);
             }
             _target = null;
         }
     }
-    
+
     public void UpdateMovementUI()
     {
         _ui.UpdateMovement(_characterMovement.RemainingMovement);
@@ -172,7 +183,7 @@ public class Character : MonoBehaviour
     public void EffectAttack()
     {
         ParticleSystem particleInstance = Instantiate(_particlePrefab, transform.position, Quaternion.identity);
-        particleInstance.GetComponent<ParticleSystemRenderer>().sortingOrder = 10; 
+        particleInstance.GetComponent<ParticleSystemRenderer>().sortingOrder = 10;
     }
 
 }

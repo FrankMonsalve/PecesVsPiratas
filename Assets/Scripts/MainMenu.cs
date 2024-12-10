@@ -9,4 +9,10 @@ public class MainMenu : MonoBehaviour
         //Time.timeScale = 1;
     }
 
+     public void LoadCredits(string nombreNivel)
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 2);
+        //Time.timeScale = 1;
+    }
+
 }

@@ -699,9 +699,7 @@ MonoBehaviour:
     Lead Developer
 
 
-
     Development Team
-
 
 
 
@@ -1524,10 +1522,51 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Peter Betancourt\nAnamaria Soriano\nFrank Monsalve\nCarmen Rencuero\n\n\nPeter
-    Betancourt\n\n\nFrank Monsalve\nCarmen Rencuero\nAnamar\xEDa Soriano\n\nFrank
-    Monsalve\nAnamaria Soriano\n\n\nFrank Monsalve\n\nPeter Betancourt\nAnamaria
-    Soriano\n\n\nCarmen Rencuero\nAnamaria Soriano\n\nCarmen Rencuero\nAnamaria Soriano"
+  m_text: 'Peter Betancourt
+
+    Anamaria Soriano
+
+    Frank Monsalve
+
+    Carmen
+    Rencuero
+
+
+
+    Peter Betancourt
+
+
+    Frank Monsalve
+
+    Carmen Rencuero
+
+
+    Frank
+    Monsalve
+
+    Anamaria Soriano
+
+
+
+    Frank Monsalve
+
+
+    Peter Betancourt
+
+    Anamaria
+    Soriano
+
+
+
+    Carmen Rencuero
+
+    Anamaria Soriano
+
+
+    Carmen Rencuero
+
+    Anamaria
+    Soriano'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8aa4fad199ab1d469645f5dd57d9b4d, type: 2}
   m_sharedMaterial: {fileID: 1516393235768923038, guid: f8aa4fad199ab1d469645f5dd57d9b4d, type: 2}
@@ -1694,7 +1733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7896106182943104033, guid: 3d6ac4e52908ea14da27e373132a5404, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -32.66
+      value: -30.53
       objectReference: {fileID: 0}
     - target: {fileID: 7896106182943104033, guid: 3d6ac4e52908ea14da27e373132a5404, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1760,7 +1799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4365764796482235213, guid: 0b33fb8c02ca8ab428fdcb36c2a74bce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -26.2
+      value: -24.3
       objectReference: {fileID: 0}
     - target: {fileID: 4365764796482235213, guid: 0b33fb8c02ca8ab428fdcb36c2a74bce, type: 3}
       propertyPath: m_LocalPosition.z

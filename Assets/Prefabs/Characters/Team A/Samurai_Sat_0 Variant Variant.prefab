@@ -389,6 +389,7 @@ MonoBehaviour:
   _ui: {fileID: 140664485380466910}
   _dust: {fileID: 5543299672513954992}
   _particlePrefab: {fileID: 1425061744818032904, guid: fc8a166072235ee48a4618ffe07132bc, type: 3}
+  _audioHit: {fileID: 8300000, guid: 2985ceec64639a1469c71ba95a3118ca, type: 3}
 --- !u!114 &2713315575511312164
 MonoBehaviour:
   m_ObjectHideFlags: 0

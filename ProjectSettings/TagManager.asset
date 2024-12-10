@@ -12,6 +12,7 @@ TagManager:
   - Obstacle
   - Personaje
   - Trigger
+  - Audio
   layers:
   - Default
   - TransparentFX
